@@ -4,50 +4,42 @@ import PageCarousel from './PageCarousel'
 import Navbar from './Navbar'
 import EvaluationPage from './EvaluationPage'
 import PageList from './PageList'
+import InteractionCanvas from './InteractionCanvas/InteractionCanvas'
+import Scene from './InteractionMatter/Scene'
+import Paper from '@material-ui/core/Paper';
+
 
 const useStyles = createUseStyles({
     evaluationForm : {
         margin:'auto',
-        width: '60%',
-        border:'1px dashed green',
+        width: '1000px',
+        //border:'1px dashed green',
         boxSizing:'border-box',
-        marginTop: '50px',
+        marginTop: '10px',
         
     },
     courseTitle:{
         fontSize:'35px',
         margin:'40px'
-    }
+    },
 })
 
 const EvaluationForm = ({useCarousel}) => {
     const [index,setIndex] = React.useState(0);
     const classes = useStyles();
 
-    /*
 
-    state:
-    pages:{
-        
-    }
-
-    Namnet på kursen
-    <Navbar>
-    <Innehåll>
-
-    useeffect(){
-        createState(pagesArr)
-    }
-
-    
-    */
 
     return(
+        
         <div className={classes.evaluationForm}>
+            <Scene/>
+
             <div className={classes.courseTitle}>Informationssystem A: Algoritmer och datastrukturer</div>
             { useCarousel && <PageCarousel/>}
             { !useCarousel && <PageList/>}
         </div>
+        
     )
 }
 

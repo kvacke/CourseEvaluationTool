@@ -1,6 +1,6 @@
 import React from 'react'
 import {createUseStyles} from 'react-jss'
-import OrdinalScaleItem from './OrdinalScaleItem'
+import OrdinalScaleInput from './OrdinalScaleInput'
 
 
 const useStyles = createUseStyles({
@@ -8,24 +8,28 @@ const useStyles = createUseStyles({
         display:'flex',
         flexDirection: 'column',
         width:'100%',
+        alignItems:'center'
         
-        //border:'1px solid lightblue',
-        
+
 
     },
     pageTitle :{
-        fontSize: '32px',
-        fontWeight: 600,
+        fontSize: '28px',
+        fontWeight: 300,
+        marginBottom:'40px',
+        marginTop: '50px'
     },
     itemList:{
         display :'flex',
         flexDirection:'column',
         height:'100%',
-        paddingBottom:'100px'
+        justifyContent:'center',
+        alignItems:'center',
+        width:'80%'
     }
 })
 
-const EvaluationPage = ({title}) => {
+const EvaluationPage = ({title, children}) => {
 
     const classes = useStyles();
 
@@ -48,11 +52,7 @@ const EvaluationPage = ({title}) => {
         <div className={classes.evaluationPage}>
             <div className={classes.pageTitle}>{title}</div>
             <div className={classes.itemList}>
-                <OrdinalScaleItem prompt="Det har varit tydligt för mig vad som krävs för att klara kursen" radioButtonData={radioButtonData[0]}/>
-                <OrdinalScaleItem prompt="Jag anser att kursens svårighetsgrad har varit" radioButtonData={radioButtonData[1]}/>
-
-
-
+                {children}
             </div>
             
             

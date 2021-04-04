@@ -8,19 +8,15 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = createUseStyles({
-    prompt:{
-        fontSize:'26px',
-        marginBottom:'30px',
-    },
     item:{
-        marginTop:'50px',
+        marginTop:'0px',
+        width:'100%'
     }
 })
 
 const muiStyles = makeStyles({
     root:{
-        width: "120px",
-        alignItems:'center',
+        width: "110px",
 
 
     }
@@ -29,7 +25,7 @@ const muiStyles = makeStyles({
 
 
 
-const OrdinalScaleItem = ({selectionHandler, prompt, radioButtonData }) => {
+const OrdinalScaleInput = ({selectionHandler, radioButtonData, isDisabled }) => {
     const [value, setValue] = React.useState(0);
     const classes = useStyles();
     const muiClasses = muiStyles();
@@ -43,13 +39,11 @@ const OrdinalScaleItem = ({selectionHandler, prompt, radioButtonData }) => {
 
     return(
         <div className={classes.item}>
-            <div className={classes.prompt}>{prompt}</div>
             <FormControl component="fieldset">
-            <RadioGroup row aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+            <RadioGroup row aria-label="gender" name="gender1" value={isDisabled ? null :value} onChange={handleChange}>
                 {
                     radioButtonData.map((string,index) => {
-                        console.log("skiten körs")
-                        return( <FormControlLabel disableRipple className={muiClasses.root} labelPlacement="top" value={index.toString()} control={<Radio />} label={string} /> )
+                        return( <FormControlLabel disabled = {isDisabled} className={muiClasses.root} labelPlacement="top" value={index.toString()} control={<Radio />} label={string} /> )
                     })
                 }
 
@@ -61,4 +55,4 @@ const OrdinalScaleItem = ({selectionHandler, prompt, radioButtonData }) => {
     )
 }
 
-export default OrdinalScaleItem;
+export default OrdinalScaleInput;
