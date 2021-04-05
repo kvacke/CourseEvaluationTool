@@ -44,11 +44,12 @@ const PageCarousel = () => {
             <Carousel
             value={index}
             onChange={onChange}
+            draggable = {false}
             >
             <EvaluationPage title={"Kursen i stort"}>
                 <GenericInput itemTitle="Så här känner jag om kursen:" inputType="smiley"/>
-                <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet." inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
-                <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit..." inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
+                <GenericInput itemTitle="Det här var särskilt bra med kursen:" inputType="textAnswer" options={radioButtonData[0]}/>
+                <GenericInput itemTitle="Det här saknades i kursen:" inputType="textAnswer" options={radioButtonData[1]}/>
             </EvaluationPage>
             <EvaluationPage title={"Förutsättningar"}>
                 <GenericInput itemTitle="Det har funnits en tydlig koppling mellan kursens mål och undervisningen" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>

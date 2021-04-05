@@ -20,8 +20,7 @@ const useStyles = createUseStyles({
         marginTop: '50px'
     },
     itemList:{
-        display :'flex',
-        flexDirection:'column',
+
         height:'100%',
         justifyContent:'center',
         alignItems:'center',

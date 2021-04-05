@@ -45,6 +45,9 @@ class Scene extends Component {
     if(this.state.engine)
     {
       var count = this.props.classData[index].credits
+      var evaluated = this.props.classData[index].evaluated
+
+      console.log(this.props.classData[index])
       var letters = 'BCDE';
       var color = '#';
       for (var i = 0; i < 6; i++) {
@@ -63,6 +66,17 @@ class Scene extends Component {
         Matter.World.add(this.state.engine.world, ball);
         Matter.Body.applyForce( ball, {x: ball.position.x, y: ball.position.y}, {x: x_number, y: -y_number });
       }
+      console.log(evaluated)
+
+      if(evaluated)
+      {
+        var xmin = 0.007, xmax = 0.010,
+            ymin = 0.0001, ymax = 0.0005
+        let goldenBall = Matter.Bodies.rectangle(0, 30, 10,20, { restitution: 0.0, render: {fillStyle: 'gold'} })
+        Matter.World.add(this.state.engine.world, goldenBall);
+        Matter.Body.applyForce( goldenBall, {x: goldenBall.position.x, y: goldenBall.position.y}, {x: x_number, y: -y_number });
+      }
+
     }
   }
 
@@ -74,7 +88,7 @@ class Scene extends Component {
     else{
       this.addBalls(index)
       var newIndex = this.state.engine ? index+1 : index
-      setTimeout(() => this.myFunction(newIndex), 200);
+      setTimeout(() => this.myFunction(newIndex), 300);
     }
   }
   

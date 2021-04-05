@@ -4,7 +4,6 @@ import PageCarousel from './PageCarousel'
 import Navbar from './Navbar'
 import EvaluationPage from './EvaluationPage'
 import PageList from './PageList'
-import InteractionCanvas from './InteractionCanvas/InteractionCanvas'
 import Scene from './InteractionMatter/Scene'
 import Paper from '@material-ui/core/Paper';
 import {generateClassData} from './InteractionMatter/ClassData'
@@ -14,7 +13,7 @@ const useStyles = createUseStyles({
     evaluationForm : {
         margin:'auto',
         width: '1000px',
-        border:'1px dashed green',
+        //border:'1px dashed green',
         boxSizing:'border-box',
         marginTop: '10px',
     },
@@ -28,7 +27,7 @@ const EvaluationForm = ({useCarousel}) => {
     const [index,setIndex] = React.useState(0);
     const classes = useStyles();
 
-    const classData = generateClassData(0,24,1,0)
+    const classData = generateClassData(3,17,1,0)
 
 
     return(

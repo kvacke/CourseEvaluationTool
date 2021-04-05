@@ -4,6 +4,7 @@ import OrdinalScaleInput from './OrdinalScaleInput'
 import CommentButton from './CommentButton'
 import Checkbox from '@material-ui/core/Checkbox';
 import SmileyInput from './SmileyInput'
+import TextAnswerInput from './TextAnswerInput'
 
 
 const useStyles = createUseStyles({
@@ -74,6 +75,10 @@ const GenericInput = ({inputType, options, itemTitle}) => {
             case "smiley":
                 return(
                     <SmileyInput/>
+                )
+            case "textAnswer":
+                return(
+                    <TextAnswerInput/>
                 )
             default: 
                 break;
