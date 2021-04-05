@@ -1,39 +1,84 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
-import Matter from "matter-js";
+import Matter, { Sleeping } from "matter-js";
+
 
 class Scene extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      creditCount : 150,
+      ballCount : 0,
+    };
+    this.addOneBall = this.addOneBall.bind(this)
+    this.myFunction = this.myFunction.bind(this)
+
   }
 
-  doSomethingAtRandomIntervals(){
 
-  
-    if(this.state.engine !== undefined)
+  sumOfCredits()
+  {
+    var sum = 0;
+    this.state.classes.forEach((item) => {
+      sum += item.credits;
+    })
+
+    return sum;
+  }
+
+  addOneBall()
+  {
+    if(this.state.engine)
     {
-      var min = 2,
-      max = 4;
-      var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
-      console.log('Wait for ' + rand + ' seconds');
-      setInterval(this.addOneBall(), rand * 1000);
-      
+      var min = 0.001,
+      max = 0.001,
+      number = Math.random() * (max - min) + min;
+      let ball = Matter.Bodies.circle(10, 10, 5, { restitution: 0.0, render: {fillStyle:'grey'} })
+      Matter.World.add(this.state.engine.world, ball)
+      Matter.Body.applyForce( ball, {x: ball.position.x, y: ball.position.y}, {x: number, y: 0 });
     }
     
   }
 
-
-  addOneBall()
+  addBalls(index)
   {
-    console.log("adding one ball! ps christie is a cutie")
-     Matter.World.add(this.state.engine.world, Matter.Bodies.circle(150, 50, 50, { restitution: 0.7 }))
+    if(this.state.engine)
+    {
+      var count = this.props.classData[index].credits
+      var letters = 'BCDE';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * letters.length)];
+      }
+
+      for(var j = 0; j < count; j++)
+      {
+        //await new Promise(r => setTimeout(r, 25));
+        var xmin = 0.007, xmax = 0.010,
+            ymin = 0.0001, ymax = 0.0005
+
+        var x_number = Math.random() * (xmax - xmin) + xmin;
+        var y_number = Math.random() * (ymax -ymin) + ymin;
+        let ball = Matter.Bodies.circle(0, 30, 8, { restitution: 0.0, render: {fillStyle: color} })
+        Matter.World.add(this.state.engine.world, ball);
+        Matter.Body.applyForce( ball, {x: ball.position.x, y: ball.position.y}, {x: x_number, y: -y_number });
+      }
+    }
   }
 
 
-
-
-
+  myFunction(index) {
+ //Generate Random number between 5 - 10
+    console.log("index from myfunction: " + index)
+    if(index == this.props.classData.length) {return }
+    else{
+      this.addBalls(index)
+      var newIndex = this.state.engine ? index+1 : index
+      setTimeout(() => this.myFunction(newIndex), 200);
+    }
+  }
+  
+  
 
 
   componentDidMount() {
@@ -42,8 +87,9 @@ class Scene extends Component {
       World = Matter.World,
       Bodies = Matter.Bodies,
       Mouse = Matter.Mouse,
+      Body = Matter.Body,
       MouseConstraint = Matter.MouseConstraint;
-
+      
     
 
     var engine = Engine.create({
@@ -56,8 +102,8 @@ class Scene extends Component {
       element: this.refs.scene,
       engine: engine,
       options: {
-        width: 1000,
-        height: 250,
+        width: 800,
+        height: 150,
         wireframes: false,
         background:'rgb(255,255,255)'
       }
@@ -67,29 +113,56 @@ class Scene extends Component {
     this.setState({
       engine : engine,
       render : render,
+      incomingBalls : [],
     })
 
-    var ballA = Bodies.circle(400, 10, 15, { restitution: 0.4 });
-    var ballB = Bodies.circle(200, 50, 15, { restitution: 0.4 });
+    var ballA = Bodies.circle(400, 10, 10, { restitution: 0.6 });
+    var ballB = Bodies.circle(200, 50, 10, { restitution: 0.6 });
     
+    var wallColor = "white";
+
     World.add(engine.world, [
 
 
       //ceiling
-      Bodies.rectangle(1,0,5000,10, {isStatic: true}),
+      Bodies.rectangle(0,0,1600,10, 
+        {isStatic: true,  
+          render: {
+            fillStyle: wallColor,
+            strokeStyle: 'white',
+            lineWidth: 0
+        }}),
 
       //left wall
-      Bodies.rectangle(0,125,10,250,{isStatic: true}),
+      Bodies.rectangle(0,125,10,250,
+        {isStatic: true,  
+          render: {
+            fillStyle: wallColor,
+            strokeStyle: 'white',
+            lineWidth: 0
+        }}),
       
-      //left wall
-      Bodies.rectangle(1000,125,10,250,{isStatic: true}),
+      //right wall
+      Bodies.rectangle(800,125,10,250,
+        {isStatic: true,  
+          render: {
+            fillStyle: wallColor,
+            strokeStyle: 'white',
+            lineWidth: 0
+        }}),
 
       //floor
-      Bodies.rectangle(0,250,5000,10, {isStatic: true}),
+      Bodies.rectangle(0,150,5000,10, 
+        {isStatic: true,  
+          render: {
+            fillStyle: wallColor,
+            strokeStyle: 'white',
+            lineWidth: 0
+        }}),
 
     ]);
 
-    World.add(engine.world, [ballA, ballB]);
+    //World.add(engine.world, [ballA, ballB]);
 
     // add mouse control
     var mouse = Mouse.create(render.canvas),
@@ -106,18 +179,54 @@ class Scene extends Component {
     World.add(engine.world, mouseConstraint);
 
     Matter.Events.on(mouseConstraint, "mousedown", function(event) {
-      World.add(engine.world, Bodies.circle(150, 50, 30, { restitution: 0.7 }));
+
+      
+        // var letters = 'ABCDEF';
+        // var color = '#';
+        // for (var i = 0; i < 6; i++) {
+        //   color += letters[Math.floor(Math.random() * letters.length)];
+        // }
+        // for(var j = 0; j < 8; j++)
+        // {
+        //   var xmin = 0.004, xmax = 0.001,
+        //       ymin = 0.0002, ymax = 0.0004
+  
+        //   var x_number = Math.random() * (xmax - xmin) + xmin;
+        //   var y_number = Math.random() * (ymax -ymin) + ymin;
+        //   let ball = Bodies.circle(250, 20, 7, { restitution: 0, render: {fillStyle: color} })
+        //   World.add(engine.world, ball);
+        //   Body.applyForce( ball, {x: ball.position.x, y: ball.position.y}, {x: x_number, y: -y_number });
+        // }
+      
+
+      
     });
+
+
+    
+    
+
 
     Engine.run(engine);
 
     Render.run(render);
+
+    this.myFunction(0);
+
+    // var interval = setInterval(() => {
+    //   var min = 0.005,
+    //       max = 0.01,
+    //       number = Math.random() * (max - min) + min;
+    //   let ball = Bodies.circle(10, 180, 10, { restitution: 0.7, render: {fillStyle:'grey'} })
+    //   World.add(engine.world, ball);
+    //   Body.applyForce( ball, {x: ball.position.x, y: ball.position.y}, {x: number, y: 0 });
+    // }, 1000 )
   }
 
   render() 
   { 
-    this.doSomethingAtRandomIntervals();
     return <div ref="scene" />;
   }
 }
+
 export default Scene;

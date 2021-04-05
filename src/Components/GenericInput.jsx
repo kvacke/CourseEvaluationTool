@@ -3,11 +3,12 @@ import {createUseStyles} from 'react-jss'
 import OrdinalScaleInput from './OrdinalScaleInput'
 import CommentButton from './CommentButton'
 import Checkbox from '@material-ui/core/Checkbox';
+import SmileyInput from './SmileyInput'
 
 
 const useStyles = createUseStyles({
     genericInput : {
-        //width: '90%',
+        width: '800px',
         //border:'1px dashed lightcoral',
         display:'flex',
         flexDirection:'column',
@@ -69,6 +70,10 @@ const GenericInput = ({inputType, options, itemTitle}) => {
             case "ordinalMultiLabel":
                 return(
                     <OrdinalScaleInput isDisabled={disabled} radioButtonData = {options}/>
+                )
+            case "smiley":
+                return(
+                    <SmileyInput/>
                 )
             default: 
                 break;
