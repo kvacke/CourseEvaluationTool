@@ -1,16 +1,13 @@
 import React from 'react'
 import {createUseStyles} from 'react-jss'
 import PageCarousel from './PageCarousel'
-import Navbar from './Navbar'
-import EvaluationPage from './EvaluationPage'
 import PageList from './PageList'
 import Scene from './InteractionMatter/Scene'
-import Paper from '@material-ui/core/Paper';
 import {generateClassData} from './InteractionMatter/ClassData'
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles} from '@material-ui/core/styles';
 
 
 const useStyles = createUseStyles({
@@ -41,7 +38,6 @@ const HtmlTooltip = withStyles((theme) => ({
   }))(Tooltip);
 
 const EvaluationForm = ({useCarousel}) => {
-    const [index,setIndex] = React.useState(0);
     const classes = useStyles();
 
     const classData = generateClassData(1,1,3,2)

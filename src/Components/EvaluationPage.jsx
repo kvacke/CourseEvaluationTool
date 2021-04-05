@@ -1,6 +1,5 @@
 import React from 'react'
 import {createUseStyles} from 'react-jss'
-import OrdinalScaleInput from './OrdinalScaleInput'
 
 
 const useStyles = createUseStyles({
@@ -32,20 +31,7 @@ const EvaluationPage = ({title, children}) => {
 
     const classes = useStyles();
 
-    const radioButtonData = [
-        ["Instämmer inte alls",
-        "Instämmer i låg grad",
-        "Instämmer i viss grad",
-        "Instämmer i hög grad",
-        "Instämmer helt"],
-        [
-            "Alldeles för låg",
-            "För låg",
-            "Lagom",
-            "För hög",
-            "Alldeles för hög"
-        ]
-    ]
+    
 
     return(
         <div className={classes.evaluationPage}>
