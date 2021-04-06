@@ -42,6 +42,13 @@ const useStyles = createUseStyles({
     burger:{
         fontSize:'22px',
         cursor:'pointer'
+    },
+    courseTitle:
+    {
+        width:'200px',
+        fontSize:'14px',
+        marginBottom:'30px',
+        color:'#575757'
     }
 })
 
@@ -83,6 +90,7 @@ const SideMenu = () => {
         <div>
             <SideMenuBurger clickHandler={handleClick}/>
             <div className={classes.sideMenu}>
+            <div className={classes.courseTitle}>Informationssystem B : Algoritmer och datastrukturer</div>
             <SideMenuItem text="Hem"/>
             <SideMenuItem text="Kursplan"/>
             <SideMenuItem text="Schema"/>

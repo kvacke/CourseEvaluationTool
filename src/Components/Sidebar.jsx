@@ -1,8 +1,9 @@
-import { faCalendarAlt, faCircle, faClock, faQuestionCircle, faUserCircle } from '@fortawesome/free-regular-svg-icons'
-import { faBook, faDotCircle, faInbox, faTachometerAlt, faTv, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt, faClock, faQuestionCircle, faUserCircle } from '@fortawesome/free-regular-svg-icons'
+import { faBook, faDotCircle, faInbox, faTachometerAlt, faTv, faUserFriends, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import {createUseStyles} from 'react-jss'
+
 
 const useStyles = createUseStyles({
     sidebar:{
@@ -40,10 +41,11 @@ const useStyles = createUseStyles({
 
     logo:{
         fontSize:'27px',
-        color:'maroon'
+        //color:'rgb(153,0,0)'
+        color:'grey'
     },
     logoContainer:{
-        marginBottom:'15px',
+        marginBottom:'25px',
         fontSize:'12px',
         marginTop:'15px',
     }

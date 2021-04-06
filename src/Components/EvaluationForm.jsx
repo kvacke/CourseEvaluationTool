@@ -8,7 +8,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { withStyles} from '@material-ui/core/styles';
+import Paper from '@material-ui/core/paper'
+import { sizing } from '@material-ui/system';
 
+//Sparar denna snippet för info-tooltippet
+//<div style={{display:'inline-block',backgroundColor:'lightgrey',position:'relative',top:'4px', height:'16px', width:'16px', borderRadius:'50%'}}>{'  '}</div>{' = Dina insamlade högskolepoäng'}
 
 const  getRandomInt = (min, max) => {
     return Math.random() * (max - min) + min;
@@ -20,7 +24,8 @@ const useStyles = createUseStyles({
         width: '1000px',
         //border:'1px dashed green',
         boxSizing:'border-box',
-        marginTop: '10px',
+        marginTop: '30px',
+        marginBottom:'80px',
     },
     courseTitle:{
         display:'none',
@@ -29,6 +34,10 @@ const useStyles = createUseStyles({
     },
     infoButton:{
         position:'absolute'
+    },
+    root:{
+        width:'800px',
+        margin:'0 auto'
     }
 })
 
@@ -45,7 +54,7 @@ const HtmlTooltip = withStyles((theme) => ({
 const EvaluationForm = ({useCarousel}) => {
     const classes = useStyles();
 
-    const classData = generateClassData(getRandomInt(1,5),getRandomInt(5,16),getRandomInt(0,2),getRandomInt(0,1),)
+    const classData = generateClassData(getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),)
 
 
     return(
@@ -56,14 +65,21 @@ const EvaluationForm = ({useCarousel}) => {
             <HtmlTooltip
             placement="left-start"
             title={<>
-                <div style={{display:'inline-block',backgroundColor:'lightgrey',position:'relative',top:'4px', height:'16px', width:'16px', borderRadius:'50%'}}>{'  '}</div>{' = Dina insamlade högskolepoäng'}
+                
+                    <div>Varje enskilt högskolepoäng som du har läst representeras av en boll.</div> 
+                    <div>Bollar i samma färg tillhör en viss kurs som du har läst.</div>
+                    <div>Ju fler kurser du läser desto större blir ditt bollhav!</div>  
+                
 
             </>}>
                 <IconButton style={{position:'absolute', top:'0px', right:'100px'}}>
                     <InfoOutlinedIcon/>
                 </IconButton>
             </HtmlTooltip>
-            <Scene classData={classData} />
+            <Paper className={classes.root} width={300}>
+                <Scene classData={classData} />
+            </Paper>
+
             </div>
             <div className={classes.courseTitle}>Informationssystem B: Algoritmer och datastrukturer</div>
             { useCarousel && <PageCarousel/>}

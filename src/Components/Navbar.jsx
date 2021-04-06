@@ -16,7 +16,7 @@ const Navbar = ({clickHandler}) => {
 
     return(
         <div>
-            <button onClick={() =>handleClick(0)}>Generellt</button>
+            <button onClick={() =>handleClick(0)}>Kursen i stort</button>
             <button onClick={() =>handleClick(1)}>Förutsättningar</button>
             <button onClick={() =>handleClick(2)}>Under kursen</button>
             <button onClick={() =>handleClick(3)}>Resultat</button>

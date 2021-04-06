@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
         fontSize: '28px',
         fontWeight: 300,
         marginBottom:'40px',
-        marginTop: '50px'
+        //display:'none'
     },
     itemList:{
 

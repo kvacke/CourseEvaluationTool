@@ -2,9 +2,10 @@ import React from 'react'
 import {createUseStyles} from 'react-jss'
 import EvaluationPage from './EvaluationPage'
 import Navbar from './Navbar'
-import Carousel from '@brainhubeu/react-carousel';
+import NewNavbar from './NewNavbar'
+import Carousel from '@brainhubeu/react-carousel'
 import GenericInput from './GenericInput'
-
+import Button from '@material-ui/core/Button';
 
 
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -13,6 +14,17 @@ const useStyles = createUseStyles({
     pageCarousel : {
         display: 'flex',
         flexDirection : 'row'
+    },
+    bottomButton :{
+        backgroundColor:'white',
+        outline:'none',
+        border:'1px solid black',
+        width:'100px',
+        height:'40px'
+    },
+    text:{
+        color:'green',
+        textTransform:'none'
     }
 })
 
@@ -72,7 +84,7 @@ const PageCarousel = () => {
 
     return(
         <div>
-            <Navbar clickHandler={setIndex}/>
+            <NewNavbar index={index} clickHandler={setIndex}/>
 
             <Carousel
             value={index ? index : 0}
@@ -81,12 +93,14 @@ const PageCarousel = () => {
             >
             <EvaluationPage title={"Kursen i stort"}>
                 <GenericInput itemTitle="Sammanfatta ditt huvudintryck av kursen genom att markera de ord som bäst beskriver kursen för dig!" inputType="words" options={wordList}/>
-                <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
+                <GenericInput itemTitle="Det här var särskilt bra:" inputType="textAnswer"/>
                 <GenericInput itemTitle="Det här saknades:" inputType="textAnswer"/>
                 <GenericInput itemTitle="Det här kan förbättras:" inputType="textAnswer"/>
 
+
             </EvaluationPage>
             <EvaluationPage title={"Förutsättningar"}>
+                <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
                 <GenericInput itemTitle="Det har funnits en tydlig koppling mellan kursens mål och undervisningen" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
                 <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
                 <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
@@ -95,14 +109,23 @@ const PageCarousel = () => {
                 <GenericInput itemTitle="Det har funnits en tydlig koppling mellan kursens mål och undervisningen" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
                 <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
                 <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
+                <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
+
             </EvaluationPage>
             <EvaluationPage title={"Resultat"}>
                 <GenericInput itemTitle="Det har funnits en tydlig koppling mellan kursens mål och undervisningen" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
                 <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
                 <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
+                <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
+                
             </EvaluationPage>
             </Carousel>
-               
+
+            <Button onClick={()=> setIndex(index-1)} disabled={index===0} className={classes.text}>Föregående</Button>
+            <Button onClick={()=> setIndex(index+1)} disabled={index===4} className={classes.text}>Nästa</Button>
+            
+            {/* <button className={`${classes.backButton} ${classes.bottomButton}`}>Föregående</button>
+            <button className={`${classes.nextButton} ${classes.bottomButton}`}>Nästa</button> */}
         </div>
     )
 }

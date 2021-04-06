@@ -7,7 +7,7 @@ const useStyles = createUseStyles({
         userSelect:'none'
     },
     wordContainer:{
-        backgroundColor: props => props ? 'darkslateblue' : 'lightgray',
+        backgroundColor: props => props ? 'darkslateblue' : '#f1f1f1',
         color: props => props ? 'white' : 'black',
 
         padding:'10px',
@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
         borderRadius:'18px',
         transition:'0.1s ',
         '&:hover':{
-            filter: props => props ? 'brightness(1.2)' : 'brightness(1.1)',
+            filter: props => props ? 'brightness(1.2)' : 'brightness(0.9)',
         },
         '&:active':
         {

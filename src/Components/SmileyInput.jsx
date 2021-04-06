@@ -54,7 +54,7 @@ const Smiley = ({icon, selected}) => {
     const classes = useStyles({color: iconColor});
 
     React.useEffect(() => {
-        setIconColor("black")
+        setIconColor(getIconColor(icon))
     },[icon]);
 
     const getIconColor = (icon) =>

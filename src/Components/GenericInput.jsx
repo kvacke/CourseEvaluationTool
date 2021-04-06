@@ -20,11 +20,12 @@ const useStyles = createUseStyles({
         color: props => props ? 'rgba(0, 0, 0, 0.38)' : 'black',
     },
     itemTitle : {
-        fontSize:'22px',
+        fontSize:'20px',
         textAlign:'left',
-        fontFamily:'Patua one',
+        fontFamily:'Roboto',
         width: '75%',
-        marginBottom:'20px'
+        marginBottom:'20px',
+        fontWeight:500
 
     },
     disabler:{

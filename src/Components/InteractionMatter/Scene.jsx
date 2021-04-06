@@ -173,7 +173,7 @@ class Scene extends Component {
         }}),
 
       //floor
-      Bodies.rectangle(0,150,5000,10, 
+      Bodies.rectangle(0,150,5000,1, 
         {isStatic: true,  
           render: {
             fillStyle: wallColor,
