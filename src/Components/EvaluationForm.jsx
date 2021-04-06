@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { withStyles} from '@material-ui/core/styles';
-import Paper from '@material-ui/core/paper'
+import Paper from '@material-ui/core/Paper'
 import { sizing } from '@material-ui/system';
 
 //Sparar denna snippet för info-tooltippet
