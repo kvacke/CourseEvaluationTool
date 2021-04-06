@@ -27,7 +27,7 @@ const useStyles = createUseStyles({
         backgroundColor:props => props ? 'white' : 'transparent',
         display:'flex',
         flexDirection:'column',
-        height:'65px',
+        height:'60px',
         alignItems:'center',
         justifyContent:'center',
         transition:'0.1s',

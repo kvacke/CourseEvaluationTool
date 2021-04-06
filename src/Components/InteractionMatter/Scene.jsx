@@ -47,7 +47,6 @@ class Scene extends Component {
       var count = this.props.classData[index].credits
       var evaluated = this.props.classData[index].evaluated
 
-      console.log(this.props.classData[index])
       var letters = 'BCDE';
       var color = '#';
       for (var i = 0; i < 6; i++) {
@@ -66,7 +65,6 @@ class Scene extends Component {
         Matter.World.add(this.state.engine.world, ball);
         Matter.Body.applyForce( ball, {x: ball.position.x, y: ball.position.y}, {x: x_number, y: -y_number });
       }
-      console.log(evaluated)
 
       // if(evaluated)
       // {
@@ -93,7 +91,6 @@ class Scene extends Component {
 
   myFunction(index) {
  //Generate Random number between 5 - 10
-    console.log("index from myfunction: " + index)
     if(index == this.props.classData.length) {return }
     else{
       this.addBalls(index)

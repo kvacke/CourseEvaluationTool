@@ -23,6 +23,7 @@ const useStyles = createUseStyles({
         marginTop: '10px',
     },
     courseTitle:{
+        display:'none',
         fontSize:'35px',
         margin:'30px'
     },
@@ -64,7 +65,7 @@ const EvaluationForm = ({useCarousel}) => {
             </HtmlTooltip>
             <Scene classData={classData} />
             </div>
-            <div className={classes.courseTitle}>Informationssystem A: Algoritmer och datastrukturer</div>
+            <div className={classes.courseTitle}>Informationssystem B: Algoritmer och datastrukturer</div>
             { useCarousel && <PageCarousel/>}
             { !useCarousel && <PageList/>}
         </div>
