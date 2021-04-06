@@ -121,8 +121,8 @@ const PageCarousel = () => {
             </EvaluationPage>
             </Carousel>
 
-            <Button onClick={()=> setIndex(index-1)} disabled={index===0} className={classes.text}>Föregående</Button>
-            <Button onClick={()=> setIndex(index+1)} disabled={index===4} className={classes.text}>Nästa</Button>
+            <Button onClick={()=> setIndex(index-1)} disabled={index<1} className={classes.text}>Föregående</Button>
+            <Button onClick={()=> setIndex(index+1)} disabled={index>3} className={classes.text}>Nästa</Button>
             
             {/* <button className={`${classes.backButton} ${classes.bottomButton}`}>Föregående</button>
             <button className={`${classes.nextButton} ${classes.bottomButton}`}>Nästa</button> */}
