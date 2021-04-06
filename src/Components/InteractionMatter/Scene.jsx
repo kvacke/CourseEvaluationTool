@@ -68,24 +68,24 @@ class Scene extends Component {
       }
       console.log(evaluated)
 
-      if(evaluated)
-      {
-        var xmin = 0.007, xmax = 0.010,
-            ymin = 0.0001, ymax = 0.0005
+      // if(evaluated)
+      // {
+      //   var xmin = 0.007, xmax = 0.010,
+      //       ymin = 0.0001, ymax = 0.0005
         
-        //kastas in från vänster
-        let goldenBall = Matter.Bodies.rectangle(0, 30, 10,20, { restitution: 0.0, render: {fillStyle: 'gold'} })
-        //kastas in från höger
-        //let goldenBall = Matter.Bodies.rectangle(800, 30, 10,20, { restitution: 0.0, render: {fillStyle: 'gold'} })
-        Matter.World.add(this.state.engine.world, goldenBall);
+      //   //kastas in från vänster
+      //   //let goldenBall = Matter.Bodies.circle(0, 30, 8, { restitution: 0.0, render: {fillStyle: 'gold'} })
+      //   //kastas in från höger
+      //   let goldenBall = Matter.Bodies.circle(800, 30, 8, { restitution: 0.0, render: {fillStyle: 'gold'} })
+      //   Matter.World.add(this.state.engine.world, goldenBall);
         
-        //kastas in från vänster
-        Matter.Body.applyForce( goldenBall, {x: goldenBall.position.x, y: goldenBall.position.y}, {x: x_number, y: -y_number });
+      //   //kastas in från vänster
+      //   //Matter.Body.applyForce( goldenBall, {x: goldenBall.position.x, y: goldenBall.position.y}, {x: x_number, y: -y_number });
 
-        //kastas in från höger
-        //Matter.Body.applyForce( goldenBall, {x: goldenBall.position.x, y: goldenBall.position.y}, {x: -x_number, y: -y_number });
+      //   //kastas in från höger
+      //   Matter.Body.applyForce( goldenBall, {x: goldenBall.position.x, y: goldenBall.position.y}, {x: -x_number, y: -y_number });
 
-      }
+      // }
 
     }
   }

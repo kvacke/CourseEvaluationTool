@@ -35,20 +35,53 @@ const PageCarousel = () => {
             "Lagom",
             "För hög",
             "Alldeles för hög"
+        ],
+        [
+            "Hej","","","","Då"
         ]
     ]
+
+    const wordList = [
+        'stimulerande',
+        'problemlösning',
+        'analyserande',
+        'ämnesfördjupning',
+        'intellektuellt utmanande',
+        'tråkig',
+        'effektiv',
+        'onödig',
+        'aha-upplevelse',
+        'utantill-kunskap',
+        'engagerande',
+        'för svår',
+        'för lätt',
+        'intressant',
+        'spretig',
+        'tung',
+        'praktisk tillämpning',
+        'ineffektiv',
+        'nyttig'
+    ]
+
+    //Löser att första elementet i karusellen aldrig fick en transitionstyle
+    let x = document.querySelectorAll('.BrainhubCarousel__track ')
+    for (let i = 0; i < x.length; i++) {
+      x[i].style.transition = '0.3s'
+    }
+
+
     return(
         <div>
             <Navbar clickHandler={setIndex}/>
 
             <Carousel
-            value={index}
+            value={index ? index : 0}
             onChange={onChange}
             draggable = {false}
             >
             <EvaluationPage title={"Kursen i stort"}>
-                <GenericInput itemTitle="Så här känner jag om kursens kvalitet:" inputType="smiley"/>
-                <GenericInput itemTitle="Det här var särskilt bra:" inputType="textAnswer"/>
+                <GenericInput itemTitle="Sammanfatta ditt huvudintryck av kursen genom att markera de ord som bäst beskriver kursen för dig!" inputType="words" options={wordList}/>
+                <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
                 <GenericInput itemTitle="Det här saknades:" inputType="textAnswer"/>
                 <GenericInput itemTitle="Det här kan förbättras:" inputType="textAnswer"/>
 

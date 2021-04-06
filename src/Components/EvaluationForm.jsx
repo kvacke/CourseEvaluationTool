@@ -10,6 +10,10 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { withStyles} from '@material-ui/core/styles';
 
 
+const  getRandomInt = (min, max) => {
+    return Math.random() * (max - min) + min;
+}
+
 const useStyles = createUseStyles({
     evaluationForm : {
         margin:'auto',
@@ -40,7 +44,7 @@ const HtmlTooltip = withStyles((theme) => ({
 const EvaluationForm = ({useCarousel}) => {
     const classes = useStyles();
 
-    const classData = generateClassData(1,1,3,2)
+    const classData = generateClassData(getRandomInt(1,5),getRandomInt(5,16),getRandomInt(0,2),getRandomInt(0,1),)
 
 
     return(
@@ -49,12 +53,12 @@ const EvaluationForm = ({useCarousel}) => {
 
             <div style={{position:'relative'}}>
             <HtmlTooltip
-            placement="right-start"
+            placement="left-start"
             title={<>
-                <div style={{display:'inline-block',backgroundColor:'lightgrey', height:'16px', width:'16px', borderRadius:'50%'}}>{'  '}</div>{' = Dina insamlade högskolepoäng'}
+                <div style={{display:'inline-block',backgroundColor:'lightgrey',position:'relative',top:'4px', height:'16px', width:'16px', borderRadius:'50%'}}>{'  '}</div>{' = Dina insamlade högskolepoäng'}
 
             </>}>
-                <IconButton style={{position:'absolute', bottom:'0px', right:'100px'}}>
+                <IconButton style={{position:'absolute', top:'0px', right:'100px'}}>
                     <InfoOutlinedIcon/>
                 </IconButton>
             </HtmlTooltip>

@@ -5,6 +5,7 @@ import CommentButton from './CommentButton'
 import Checkbox from '@material-ui/core/Checkbox';
 import SmileyInput from './SmileyInput'
 import TextAnswerInput from './TextAnswerInput'
+import WordsInput from './WordsInput'
 
 
 const useStyles = createUseStyles({
@@ -15,7 +16,7 @@ const useStyles = createUseStyles({
         flexDirection:'column',
         position:'relative',
         boxSizing:'border-box',
-        marginBottom: '100px',
+        marginBottom: '80px',
         color: props => props ? 'rgba(0, 0, 0, 0.38)' : 'black',
     },
     itemTitle : {
@@ -79,6 +80,10 @@ const GenericInput = ({inputType, options, itemTitle}) => {
             case "textAnswer":
                 return(
                     <TextAnswerInput/>
+                )
+            case "words":
+                return (
+                    <WordsInput words = {options}/>
                 )
             default: 
                 break;
