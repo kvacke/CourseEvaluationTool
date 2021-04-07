@@ -39,7 +39,7 @@ const useStyles = createUseStyles({
     },
     remaining:{
         marginTop:10,
-        
+        textAlign:'left'
     }
 })
 
@@ -47,7 +47,6 @@ const useStyles = createUseStyles({
 
 const StatusIndicator = ({done, remaining}) =>{
     const classes = useStyles(done);
-    console.log(remaining)
     return (
         <div className={classes.statusIndicator}>
             <div className={classes.statusTitle}>
@@ -68,16 +67,41 @@ const StatusIndicator = ({done, remaining}) =>{
     )
 }
 
-const SendPage = ({answers}) => {
+const SendPage = ({formData}) => {
     const [done, setDone] = React.useState(false)
-    const [remaining, setRemaining] = React.useState([{category:'Kursen i stort', count: 2},{category:'Under kursen', count: 1}])
+    const [remaining, setRemaining] = React.useState([])
     const classes = useStyles()
 
+    const getRemaining = (arr) =>
+    { 
+        var result = [
+            {category:arr[0][0].category, count:0},
+            {category:arr[1][0].category, count:0},
+            {category:arr[2][0].category, count:0},
+            {category:arr[3][0].category, count:0}]
+
+        arr.forEach((category,categoryIndex)=>
+            category.forEach((item)=>{
+                if(item.value === undefined && !item.disabled)
+                {
+                    result[categoryIndex].count += 1
+                }
+            })
+        )
+        return result;
+    }
+
+    
 
     const handleClick = () =>
     {
         setDone(!done)
     }
+
+    React.useEffect(()=>{
+        console.log("checking for new remaining")
+        setRemaining(getRemaining(formData))
+    },[formData])
 
     return(
         <div className={classes.sendPage}>

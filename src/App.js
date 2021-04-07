@@ -1,7 +1,7 @@
 import './App.css';
 import EvaluationForm from './Components/EvaluationForm'
-import Sidebar from './Components/Sidebar'
-import SideMenu from './Components/SideMenu'
+import Sidebar from './Components/Environment/Sidebar'
+import SideMenu from './Components/Environment/SideMenu'
 
 function App() {
   return (

@@ -3,7 +3,7 @@ import {createUseStyles} from 'react-jss'
 import EvaluationPage from './EvaluationPage'
 import NewNavbar from './NewNavbar'
 import Carousel from '@brainhubeu/react-carousel'
-import GenericInput from './GenericInput'
+import GenericInput from './Inputs/GenericInput'
 import Button from '@material-ui/core/Button';
 import SendPage from './SendPage'
 
@@ -29,7 +29,7 @@ const useStyles = createUseStyles({
     }
 })
 
-const PageCarousel = () => {
+const PageCarousel = ({formData}) => {
     const [index, setIndex] = React.useState(0);
     const classes = useStyles();
 
@@ -91,7 +91,6 @@ const PageCarousel = () => {
               })
         }
     },[index])
-
     return(
         <div>
             <NewNavbar index={index} clickHandler={setIndex}/>
@@ -102,33 +101,31 @@ const PageCarousel = () => {
             draggable = {false}
             >
             <EvaluationPage title={"Kursen i stort"}>
-                <GenericInput itemTitle="Sammanfatta ditt huvudintryck av kursen genom att markera de ord som bäst beskriver kursen för dig!" inputType="words" options={wordList}/>
-                <GenericInput itemTitle="Det här var särskilt bra:" inputType="textAnswer"/>
-                <GenericInput itemTitle="Det här saknades:" inputType="textAnswer"/>
-                <GenericInput itemTitle="Det här kan förbättras:" inputType="textAnswer"/>
+            {formData[0].map((item) =>{
+                return <GenericInput id = {item.id} key={item.id} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
 
+            })}
             </EvaluationPage>
+
             <EvaluationPage title={"Förutsättningar"}>
-                <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
-                <GenericInput itemTitle="Det har funnits en tydlig koppling mellan kursens mål och undervisningen" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
-                <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
-                <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
+            {formData[1].map((item) =>{
+                    return <GenericInput id={item.id} key={item.id} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
+
+                })}
             </EvaluationPage>
             <EvaluationPage title={"Under kursen"}>
-                <GenericInput itemTitle="Det har funnits en tydlig koppling mellan kursens mål och undervisningen" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
-                <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
-                <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
-                <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
+            {formData[2].map((item) =>{
+                    return <GenericInput id={item.id} key={item.id} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
 
+                })}
             </EvaluationPage>
             <EvaluationPage title={"Resultat"}>
-                <GenericInput itemTitle="Det har funnits en tydlig koppling mellan kursens mål och undervisningen" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
-                <GenericInput itemTitle="Examinationen/-erna krävde att man verkligen hade förstått kursinnehållet" inputType="ordinalMultiLabel" options={radioButtonData[0]}/>
-                <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
-                <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
-                
+            {formData[3].map((item) =>{
+                    return <GenericInput id = {item.id} key={item.id} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
+
+                })}
             </EvaluationPage>
-            <SendPage/>
+            <SendPage formData={formData}/>
             </Carousel>
      
             <Button onClick={()=> setIndex(index-1)} disabled={index<1} className={classes.text}>Föregående</Button>

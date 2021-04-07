@@ -5,7 +5,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import SmileyInput from './SmileyInput'
 import TextAnswerInput from './TextAnswerInput'
 import WordsInput from './WordsInput'
-
+import Context from '../../Context'
 
 const useStyles = createUseStyles({
     genericInput : {
@@ -38,18 +38,23 @@ const useStyles = createUseStyles({
     }
 })
 
-export const Disabler = ({clickHandler, isDisabled, text}) => {
+export const Disabler = ({clickHandler, isDisabled, text,id}) => {
 
     const classes = useStyles();
 
-    const handleChange = (event) =>
+    const handleChange = (func) =>
     {
-        clickHandler(event.target.checked)
+        func(id,true);
     }
 
     return(
         <div className={classes.disabler}>
-            {text}<Checkbox color='default' checked ={isDisabled} onChange = {handleChange}/>
+            {text}
+            <Context.Consumer>
+            {value =>
+            <Checkbox color='default' checked ={isDisabled} onChange = {()=>handleChange(value.setDisabledStatusById)}/>
+            }
+            </Context.Consumer>
         </div>
     )
 }
@@ -61,15 +66,14 @@ const ItemTitle = ({title}) =>
     return(<div className={classes.itemTitle}>{title}</div>)
 }
 
-const GenericInput = ({inputType, options, itemTitle}) => {
+const GenericInput = ({inputType, options, itemTitle, key, id}) => {
     const [disabled, setDisabled] = React.useState(false)
-
     const classes = useStyles(disabled);
 
     const createInput = () => {
         switch(inputType)
         {
-            case "ordinalMultiLabel":
+            case "ordinalScaleInput":
                 return(
                     <OrdinalScaleInput isDisabled={disabled} radioButtonData = {options}/>
                 )
@@ -93,7 +97,7 @@ const GenericInput = ({inputType, options, itemTitle}) => {
     return(
         <div className={classes.genericInput}>
             <ItemTitle title={itemTitle}/>
-            <Disabler text="Avstå" isDisabled={disabled} clickHandler={setDisabled}/>
+            <Disabler id={id} text="Avstå" isDisabled={disabled} clickHandler={setDisabled}/>
             {createInput()}
         </div>
     )

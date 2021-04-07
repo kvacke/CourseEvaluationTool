@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {createUseStyles} from 'react-jss'
 import PageCarousel from './PageCarousel'
 import PageList from './PageList'
@@ -9,6 +9,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { withStyles} from '@material-ui/core/styles';
 import {Paper} from '@material-ui/core'
+import initialFormData from '../initialFormData'
+import Context from '../Context'
  
 //Sparar denna snippet för info-tooltippet
 //<div style={{display:'inline-block',backgroundColor:'lightgrey',position:'relative',top:'4px', height:'16px', width:'16px', borderRadius:'50%'}}>{'  '}</div>{' = Dina insamlade högskolepoäng'}
@@ -52,9 +54,46 @@ const HtmlTooltip = withStyles((theme) => ({
 
 const EvaluationForm = ({useCarousel}) => {
     const classes = useStyles();
-
     const classData = generateClassData(getRandomInt(1,2),getRandomInt(0,5),getRandomInt(0,2),getRandomInt(0,1),)
+    const [formData, setFormData] = React.useState(initialFormData)
 
+    const setValueById = (id,value) =>
+    {
+        let arr = formData;
+        arr.forEach((page) =>{
+            page.forEach((item) => {
+                if(item.id === id)
+                {
+                    item.value = value;
+                }
+            })
+        })
+        setFormData(arr);
+    }
+
+    const setDisabledStatusById = (id, newDisabledStatus) =>
+    {
+        console.log("trying to disable...")
+        let arr = formData;
+        arr.forEach((page) =>{
+            page.forEach((item) => {
+                if(item.id === id)
+                {
+                    console.log("aha! Disabling...")
+                    item.disabled = newDisabledStatus;
+                }
+            })
+        })
+        setFormData(arr);
+    }
+
+    React.useEffect(()=>{
+        console.log("sätter nytt state")
+    },[formData])
+
+
+    
+    const contextFunctions = {setValueById, setDisabledStatusById}
 
     return(
         
@@ -81,8 +120,12 @@ const EvaluationForm = ({useCarousel}) => {
 
             </div>
             <div className={classes.courseTitle}>Informationssystem B: Algoritmer och datastrukturer</div>
-            { useCarousel && <PageCarousel/>}
+            <Context.Provider value = {contextFunctions}>
+
+            
+            { useCarousel && <PageCarousel formData={formData}/>}
             { !useCarousel && <PageList/>}
+            </Context.Provider>
         </div>
         
     )

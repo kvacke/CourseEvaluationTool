@@ -1,7 +1,7 @@
 import React from 'react'
 import EvaluationPage from './EvaluationPage'
 import {createUseStyles} from 'react-jss'
-import GenericInput from './GenericInput'
+import GenericInput from './Inputs/GenericInput'
 
 const useStyles = createUseStyles({
     pageList : {
