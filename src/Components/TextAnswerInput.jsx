@@ -27,7 +27,7 @@ const TextAnswerInput = () => {
     return(
         <div className={classes.textAnswerInput}>
             <div className={classes.textAreaContainer}>
-                    <TextareaAutosize spellCheck={false} rowsMin={5} rowsMax={20} className={classes.textArea} placeholder="" />
+                    <TextareaAutosize spellCheck={false} rowsMin={3} rowsMax={20} className={classes.textArea} placeholder="" />
             </div>
         </div>  
     )

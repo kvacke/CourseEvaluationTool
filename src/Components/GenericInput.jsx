@@ -1,7 +1,6 @@
 import React from 'react'
 import {createUseStyles} from 'react-jss'
 import OrdinalScaleInput from './OrdinalScaleInput'
-import CommentButton from './CommentButton'
 import Checkbox from '@material-ui/core/Checkbox';
 import SmileyInput from './SmileyInput'
 import TextAnswerInput from './TextAnswerInput'
@@ -39,7 +38,7 @@ const useStyles = createUseStyles({
     }
 })
 
-const Disabler = ({clickHandler, isDisabled}) => {
+export const Disabler = ({clickHandler, isDisabled, text}) => {
 
     const classes = useStyles();
 
@@ -50,7 +49,7 @@ const Disabler = ({clickHandler, isDisabled}) => {
 
     return(
         <div className={classes.disabler}>
-            Avstå<Checkbox color='default' checked ={isDisabled} onChange = {handleChange}/>
+            {text}<Checkbox color='default' checked ={isDisabled} onChange = {handleChange}/>
         </div>
     )
 }
@@ -94,7 +93,7 @@ const GenericInput = ({inputType, options, itemTitle}) => {
     return(
         <div className={classes.genericInput}>
             <ItemTitle title={itemTitle}/>
-            <Disabler isDisabled={disabled} clickHandler={setDisabled}/>
+            <Disabler text="Avstå" isDisabled={disabled} clickHandler={setDisabled}/>
             {createInput()}
         </div>
     )

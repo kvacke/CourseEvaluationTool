@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import ReactDOM from "react-dom";
-import Matter, { Sleeping } from "matter-js";
+import Matter from "matter-js";
 
 
 class Scene extends Component {
@@ -45,7 +44,7 @@ class Scene extends Component {
     if(this.state.engine)
     {
       var count = this.props.classData[index].credits
-      var evaluated = this.props.classData[index].evaluated
+      //var evaluated = this.props.classData[index].evaluated
 
       var letters = 'BCDE';
       var color = '#';
@@ -91,7 +90,7 @@ class Scene extends Component {
 
   myFunction(index) {
  //Generate Random number between 5 - 10
-    if(index == this.props.classData.length) {return }
+    if(index === this.props.classData.length) {return }
     else{
       this.addBalls(index)
       var newIndex = this.state.engine ? index+1 : index
@@ -108,7 +107,6 @@ class Scene extends Component {
       World = Matter.World,
       Bodies = Matter.Bodies,
       Mouse = Matter.Mouse,
-      Body = Matter.Body,
       MouseConstraint = Matter.MouseConstraint;
       
     
@@ -136,9 +134,6 @@ class Scene extends Component {
       render : render,
       incomingBalls : [],
     })
-
-    var ballA = Bodies.circle(400, 10, 10, { restitution: 0.6 });
-    var ballB = Bodies.circle(200, 50, 10, { restitution: 0.6 });
     
     var wallColor = "white";
 

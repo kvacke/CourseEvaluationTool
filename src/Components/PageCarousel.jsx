@@ -1,15 +1,16 @@
 import React from 'react'
 import {createUseStyles} from 'react-jss'
 import EvaluationPage from './EvaluationPage'
-import Navbar from './Navbar'
 import NewNavbar from './NewNavbar'
 import Carousel from '@brainhubeu/react-carousel'
 import GenericInput from './GenericInput'
 import Button from '@material-ui/core/Button';
+import SendPage from './SendPage'
+
 
 
 import '@brainhubeu/react-carousel/lib/style.css';
-
+ 
 const useStyles = createUseStyles({
     pageCarousel : {
         display: 'flex',
@@ -81,6 +82,15 @@ const PageCarousel = () => {
       x[i].style.transition = '0.3s'
     }
 
+    React.useEffect(()=>{
+        if(index ===4)
+        {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              })
+        }
+    },[index])
 
     return(
         <div>
@@ -96,7 +106,6 @@ const PageCarousel = () => {
                 <GenericInput itemTitle="Det här var särskilt bra:" inputType="textAnswer"/>
                 <GenericInput itemTitle="Det här saknades:" inputType="textAnswer"/>
                 <GenericInput itemTitle="Det här kan förbättras:" inputType="textAnswer"/>
-
 
             </EvaluationPage>
             <EvaluationPage title={"Förutsättningar"}>
@@ -119,13 +128,11 @@ const PageCarousel = () => {
                 <GenericInput itemTitle="Jag tycker att kraven vid examinationen/-erna har varit" inputType="ordinalMultiLabel" options={radioButtonData[1]}/>
                 
             </EvaluationPage>
+            <SendPage/>
             </Carousel>
-
+     
             <Button onClick={()=> setIndex(index-1)} disabled={index<1} className={classes.text}>Föregående</Button>
             <Button onClick={()=> setIndex(index+1)} disabled={index>3} className={classes.text}>Nästa</Button>
-            
-            {/* <button className={`${classes.backButton} ${classes.bottomButton}`}>Föregående</button>
-            <button className={`${classes.nextButton} ${classes.bottomButton}`}>Nästa</button> */}
         </div>
     )
 }

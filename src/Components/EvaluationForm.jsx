@@ -9,8 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { withStyles} from '@material-ui/core/styles';
 import {Paper} from '@material-ui/core'
-import { sizing } from '@material-ui/system';
-
+ 
 //Sparar denna snippet för info-tooltippet
 //<div style={{display:'inline-block',backgroundColor:'lightgrey',position:'relative',top:'4px', height:'16px', width:'16px', borderRadius:'50%'}}>{'  '}</div>{' = Dina insamlade högskolepoäng'}
 
@@ -54,7 +53,7 @@ const HtmlTooltip = withStyles((theme) => ({
 const EvaluationForm = ({useCarousel}) => {
     const classes = useStyles();
 
-    const classData = generateClassData(getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),)
+    const classData = generateClassData(getRandomInt(1,2),getRandomInt(0,5),getRandomInt(0,2),getRandomInt(0,1),)
 
 
     return(

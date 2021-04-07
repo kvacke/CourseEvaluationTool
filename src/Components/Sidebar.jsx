@@ -1,5 +1,5 @@
 import { faCalendarAlt, faClock, faQuestionCircle, faUserCircle } from '@fortawesome/free-regular-svg-icons'
-import { faBook, faDotCircle, faInbox, faTachometerAlt, faTv, faUserFriends, faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faBook, faInbox, faTachometerAlt, faTv, faUserFriends, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import {createUseStyles} from 'react-jss'
@@ -14,7 +14,6 @@ const useStyles = createUseStyles({
         width:'85px',
         backgroundColor:'#f0f0f0',
         fontFamily:'Lato',
-        color:'grey',
         fontSize:'14px',
         userSelect:'none',
         color:'#575757'

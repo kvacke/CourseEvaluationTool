@@ -1,7 +1,6 @@
 import React from 'react'
 import EvaluationPage from './EvaluationPage'
 import {createUseStyles} from 'react-jss'
-import OrdinalScaleInput from './OrdinalScaleInput'
 import GenericInput from './GenericInput'
 
 const useStyles = createUseStyles({
@@ -18,7 +17,8 @@ const PageList = () => {
 
     const classes = useStyles();
 
-    const radioButtonData = [
+    const radioButtonData = 
+    [
         [
             "Instämmer inte alls",
             "Instämmer i låg grad",

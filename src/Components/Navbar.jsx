@@ -1,13 +1,11 @@
 import React from 'react'
 import {createUseStyles} from 'react-jss'
 
-const useStyles = createUseStyles({
 
-})
 
 const Navbar = ({clickHandler}) => {
 
-    const classes = useStyles();
+    //const classes = useStyles();
 
     const handleClick = (num) => {
         console.log(num)

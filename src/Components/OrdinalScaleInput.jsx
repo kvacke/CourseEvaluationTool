@@ -6,6 +6,20 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import {withStyles} from '@material-ui/core/styles';
+
+
+const CustomRadio = withStyles({
+    root: {
+        color: 'black',
+        '&$checked': {
+            color: 'rgb(4, 84, 164)',
+        },
+    },
+    checked: {},
+})((props) => <Radio color="default" {...props} />);
+
+
 
 const useStyles = createUseStyles({
 
@@ -14,7 +28,7 @@ const useStyles = createUseStyles({
 const muiStyles = makeStyles({
     root:{
         width: "110px",
-        
+
 
     }
     
@@ -40,11 +54,9 @@ const OrdinalScaleInput = ({selectionHandler, radioButtonData, isDisabled }) => 
             <RadioGroup row aria-label="gender" name="gender1" value={isDisabled ? null :value} onChange={handleChange}>
                 {
                     radioButtonData.map((string,index) => {
-                        return( <FormControlLabel disabled = {isDisabled} className={muiClasses.root} labelPlacement="top" value={index.toString()} control={<Radio />} label={string} /> )
+                        return( <FormControlLabel disabled = {isDisabled} className={muiClasses.root} labelPlacement="top" value={index.toString()} control={<CustomRadio/>} label={string} /> )
                     })
                 }
-
-              
 
             </RadioGroup>
             </FormControl>

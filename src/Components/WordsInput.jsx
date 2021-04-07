@@ -7,7 +7,7 @@ const useStyles = createUseStyles({
         userSelect:'none'
     },
     wordContainer:{
-        backgroundColor: props => props ? 'darkslateblue' : '#f1f1f1',
+        backgroundColor: props => props ? 'rgb(4, 84, 164)' : '#f1f1f1',
         color: props => props ? 'white' : 'black',
 
         padding:'10px',
@@ -59,8 +59,8 @@ const WordsInput = ({_title, words}) => {
 
     return(
         <div className={classes.wordsInput}>
-            {words.map((item) => 
-                {return <Word word={item}/>}
+            {words.map((item, index) => 
+                {return <Word key={index} word={item}/>}
             )}
         </div>
     )

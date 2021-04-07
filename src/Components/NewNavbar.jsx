@@ -2,14 +2,13 @@ import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 
 
 const StyledTabs = withStyles({
   root:{
   },
   flexContainer:{
-    //justifyContent:'center',
+    justifyContent:'center',
   },
   indicator: {
     display: 'flex',
@@ -29,7 +28,18 @@ const StyledTab = withStyles((theme) => ({
     color: '#black',
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: theme.typography.pxToRem(15),
-    marginRight: theme.spacing(1),
+    '&:focus': {
+      opacity: 1,
+    },
+  },
+}))((props) => <Tab disableRipple {...props} />);
+
+const SendTab = withStyles((theme) => ({
+  root: {
+    textTransform: 'none',
+    color: 'rgb(4, 84, 164)',
+    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: theme.typography.pxToRem(15),
     '&:focus': {
       opacity: 1,
     },
@@ -47,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     width:'800px',
     margin:'0 auto',
     marginTop:'20px',
-    marginBottom:'50px'
+    marginBottom:'50px',
   },
 }));
 
@@ -66,6 +76,7 @@ export default function NewNavbar({clickHandler,index}) {
           <StyledTab label="Förutsättningar" />
           <StyledTab label="Under kursen" />
           <StyledTab label="Resultat" />
+          <SendTab label="Skicka in" />
         </StyledTabs>
       </div>
   );
