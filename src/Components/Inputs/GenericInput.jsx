@@ -44,7 +44,7 @@ export const Disabler = ({clickHandler, isDisabled, text,id}) => {
 
     const handleChange = (func) =>
     {
-        func(id,true);
+        func(id,!isDisabled);
     }
 
     return(
@@ -52,7 +52,7 @@ export const Disabler = ({clickHandler, isDisabled, text,id}) => {
             {text}
             <Context.Consumer>
             {value =>
-            <Checkbox color='default' checked ={isDisabled} onChange = {()=>handleChange(value.setDisabledStatusById)}/>
+            <Checkbox disableRipple color='default' checked ={isDisabled} onChange = {()=>handleChange(value.setDisabledStatusById)}/>
             }
             </Context.Consumer>
         </div>
@@ -66,28 +66,28 @@ const ItemTitle = ({title}) =>
     return(<div className={classes.itemTitle}>{title}</div>)
 }
 
-const GenericInput = ({inputType, options, itemTitle, key, id}) => {
-    const [disabled, setDisabled] = React.useState(false)
-    const classes = useStyles(disabled);
+const GenericInput = ({inputType, options, itemTitle, value,id,stateDisabled, stateValue}) => {
+    const classes = useStyles(stateDisabled);
 
-    const createInput = () => {
+    const createInput = (func) => {
+        
         switch(inputType)
         {
             case "ordinalScaleInput":
                 return(
-                    <OrdinalScaleInput isDisabled={disabled} radioButtonData = {options}/>
+                    <OrdinalScaleInput sendValue={func} stateValue={stateValue} id={id} isDisabled={stateDisabled} radioButtonData = {options}/>
                 )
             case "smiley":
                 return(
-                    <SmileyInput/>
+                    <SmileyInput  sendValue={func} isDisabled={stateDisabled} stateValue={stateValue} id={id} />
                 )
             case "textAnswer":
                 return(
-                    <TextAnswerInput/>
+                    <TextAnswerInput  sendValue={func} isDisabled={stateDisabled} id={id} stateValue={stateValue} />
                 )
             case "words":
                 return (
-                    <WordsInput words = {options}/>
+                    <WordsInput  sendValue={func} isDisabled={stateDisabled} stateValue={stateValue} id={id} words = {options}/>
                 )
             default: 
                 break;
@@ -97,8 +97,13 @@ const GenericInput = ({inputType, options, itemTitle, key, id}) => {
     return(
         <div className={classes.genericInput}>
             <ItemTitle title={itemTitle}/>
-            <Disabler id={id} text="Avstå" isDisabled={disabled} clickHandler={setDisabled}/>
-            {createInput()}
+            <Disabler id={id} text="Avstå" isDisabled={stateDisabled}/>
+            <Context.Consumer>
+                {
+                    value =>
+                    createInput(value.setValueById)
+                }
+            </Context.Consumer>
         </div>
     )
 }

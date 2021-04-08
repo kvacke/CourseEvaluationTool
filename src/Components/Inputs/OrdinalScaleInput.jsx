@@ -5,7 +5,6 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import {withStyles} from '@material-ui/core/styles';
 
 
@@ -15,9 +14,10 @@ const CustomRadio = withStyles({
         '&$checked': {
             color: 'rgb(4, 84, 164)',
         },
+        backgroundColor:'transparent'
     },
     checked: {},
-})((props) => <Radio color="default" {...props} />);
+})((props) => <Radio disableFocusRipple disableRipple color="default" {...props} />);
 
 
 
@@ -36,15 +36,17 @@ const muiStyles = makeStyles({
 
 
 
-const OrdinalScaleInput = ({selectionHandler, radioButtonData, isDisabled }) => {
+const OrdinalScaleInput = ({selectionHandler, radioButtonData, id, isDisabled , stateValue, sendValue}) => {
     const [value, setValue] = React.useState(0);
     const classes = useStyles();
     const muiClasses = muiStyles();
     const handleChange = (event) => {
         console.log(event.target.value)
         setValue(event.target.value);
-
+        sendValue(id, event.target.value)
       };
+
+    
 
     
 

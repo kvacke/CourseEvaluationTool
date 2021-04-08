@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {createUseStyles} from 'react-jss';
 import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,7 +28,6 @@ const useStyles = createUseStyles({
         boxSizing:'border-box',
         borderRadius:'10px',
         fontSize:'20px',
-        color:'white',
         fontWeight: 500,
         color: props => props ? '#469c71' : '#ff9933'
 
@@ -45,8 +44,21 @@ const useStyles = createUseStyles({
 
 
 
-const StatusIndicator = ({done, remaining}) =>{
+const StatusIndicator = ({remaining}) =>{
+    const [done, setDone] = React.useState(false)
+    
     const classes = useStyles(done);
+
+
+    useEffect(()=>{
+        let sum = 0;
+        remaining.forEach((category)=>{
+            sum += category.count
+        })
+        setDone(sum<1)
+    },[remaining])
+
+
     return (
         <div className={classes.statusIndicator}>
             <div className={classes.statusTitle}>
@@ -56,7 +68,7 @@ const StatusIndicator = ({done, remaining}) =>{
                 <table>
                     <tbody>
                     {!done && remaining.map((item,index)=>{
-                    return <tr key={index}><td>{item.category}: </td><td>{item.count}</td></tr>
+                    return <tr key={index}><td>{item.category}: </td><td>{item.count === 0 ? 'Klar' : item.count}</td></tr>
                 })}
                     </tbody>
                 </table>
@@ -74,6 +86,8 @@ const SendPage = ({formData}) => {
 
     const getRemaining = (arr) =>
     { 
+        setDone(false);
+        var sum = 0;
         var result = [
             {category:arr[0][0].category, count:0},
             {category:arr[1][0].category, count:0},
@@ -85,9 +99,15 @@ const SendPage = ({formData}) => {
                 if(item.value === undefined && !item.disabled)
                 {
                     result[categoryIndex].count += 1
+                    sum += 1;
                 }
             })
         )
+        if(sum < 1)
+        {
+            setDone(true);
+        }
+
         return result;
     }
 
@@ -95,8 +115,8 @@ const SendPage = ({formData}) => {
 
     const handleClick = () =>
     {
-        setDone(!done)
-    }
+        alert("Här kommer formuläret att försvinna och bytas ut mot en resultatvy. Sidomenyn och bollhavet är kvar.")
+    }  
 
     React.useEffect(()=>{
         console.log("checking for new remaining")
@@ -112,7 +132,7 @@ const SendPage = ({formData}) => {
                 När du skickat in formuläret tas du till resultatvyn där du kan se de andra kursdeltagarnas svar.<br/>
                 Tänk på att du inte kommer att kunna göra ändringar i din kursvärdering efter att du skickat in.
             </div>
-            <StatusIndicator remaining={remaining} done={done}/>
+            <StatusIndicator remaining={remaining}/>
             <Button onClick={handleClick} variant="contained" color="default">{done ? 'Skicka in och se resultat' : 'Avstå resten och skicka in'}</Button>
             
         </div>

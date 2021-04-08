@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {createUseStyles} from 'react-jss'
 import PageCarousel from './PageCarousel'
 import PageList from './PageList'
@@ -46,7 +46,7 @@ const HtmlTooltip = withStyles((theme) => ({
     tooltip: {
       backgroundColor: '#f5f5f9',
       color: 'rgba(0, 0, 0, 0.87)',
-      maxWidth: 220,
+      maxWidth: 280,
       fontSize: theme.typography.pxToRem(12),
       border: '1px solid #dadde9',
     },
@@ -54,42 +54,39 @@ const HtmlTooltip = withStyles((theme) => ({
 
 const EvaluationForm = ({useCarousel}) => {
     const classes = useStyles();
-    const classData = generateClassData(getRandomInt(1,2),getRandomInt(0,5),getRandomInt(0,2),getRandomInt(0,1),)
+    const classData = generateClassData(getRandomInt(1,4),getRandomInt(5,10),getRandomInt(1,2),getRandomInt(0,1),)
     const [formData, setFormData] = React.useState(initialFormData)
 
     const setValueById = (id,value) =>
-    {
-        let arr = formData;
+    {   
+        console.log("attempting to set...")
+        const arr = formData;
         arr.forEach((page) =>{
             page.forEach((item) => {
                 if(item.id === id)
                 {
+                    console.log("setting!")
                     item.value = value;
                 }
             })
         })
-        setFormData(arr);
+        setFormData([...arr]);
     }
 
     const setDisabledStatusById = (id, newDisabledStatus) =>
     {
-        console.log("trying to disable...")
-        let arr = formData;
+        const arr = formData;
         arr.forEach((page) =>{
             page.forEach((item) => {
                 if(item.id === id)
                 {
-                    console.log("aha! Disabling...")
                     item.disabled = newDisabledStatus;
                 }
             })
         })
-        setFormData(arr);
+        setFormData([...arr]);
+        console.log(formData);
     }
-
-    React.useEffect(()=>{
-        console.log("sätter nytt state")
-    },[formData])
 
 
     
@@ -104,9 +101,9 @@ const EvaluationForm = ({useCarousel}) => {
             placement="left-start"
             title={<>
                 
-                    <div>Varje enskilt högskolepoäng som du har läst representeras av en boll.</div> 
-                    <div>Bollar i samma färg tillhör en viss kurs som du har läst.</div>
-                    <div>Ju fler kurser du läser desto större blir ditt bollhav!</div>  
+                    <div>Varje högskolepoäng som du har läst på Uppsala Universitet representeras här av en boll.
+                    Bollar i samma färg tillhör en viss kurs som du har läst.<br/><br/>
+                    Ju fler kurser du läser desto djupare blir ditt bollhav!</div>  
                 
 
             </>}>

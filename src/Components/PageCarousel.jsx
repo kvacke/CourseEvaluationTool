@@ -34,48 +34,7 @@ const PageCarousel = ({formData}) => {
     const classes = useStyles();
 
     const onChange = value => setIndex(value);
-    const radioButtonData = [
-        [
-            "Instämmer inte alls",
-            "Instämmer i låg grad",
-            "Instämmer i viss grad",
-            "Instämmer i hög grad",
-            "Instämmer helt"
-        ],
-        [
-            "Alldeles för låg",
-            "För låg",
-            "Lagom",
-            "För hög",
-            "Alldeles för hög"
-        ],
-        [
-            "Hej","","","","Då"
-        ]
-    ]
-
-    const wordList = [
-        'stimulerande',
-        'problemlösning',
-        'analyserande',
-        'ämnesfördjupning',
-        'intellektuellt utmanande',
-        'tråkig',
-        'effektiv',
-        'onödig',
-        'aha-upplevelse',
-        'utantill-kunskap',
-        'engagerande',
-        'för svår',
-        'för lätt',
-        'intressant',
-        'spretig',
-        'tung',
-        'praktisk tillämpning',
-        'ineffektiv',
-        'nyttig'
-    ]
-
+    
     //Löser att första elementet i karusellen aldrig fick en transitionstyle
     let x = document.querySelectorAll('.BrainhubCarousel__track ')
     for (let i = 0; i < x.length; i++) {
@@ -102,34 +61,34 @@ const PageCarousel = ({formData}) => {
             >
             <EvaluationPage title={"Kursen i stort"}>
             {formData[0].map((item) =>{
-                return <GenericInput id = {item.id} key={item.id} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
+                return <GenericInput id = {item.id} key={item.id} stateValue={item.value} stateDisabled={item.disabled} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
 
             })}
             </EvaluationPage>
 
             <EvaluationPage title={"Förutsättningar"}>
             {formData[1].map((item) =>{
-                    return <GenericInput id={item.id} key={item.id} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
+                    return <GenericInput id={item.id} key={item.id} stateValue={item.value} stateDisabled={item.disabled} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
 
                 })}
             </EvaluationPage>
             <EvaluationPage title={"Under kursen"}>
             {formData[2].map((item) =>{
-                    return <GenericInput id={item.id} key={item.id} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
+                    return <GenericInput id={item.id} key={item.id} stateValue={item.value} stateDisabled={item.disabled} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
 
                 })}
             </EvaluationPage>
             <EvaluationPage title={"Resultat"}>
             {formData[3].map((item) =>{
-                    return <GenericInput id = {item.id} key={item.id} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
+                    return <GenericInput id = {item.id} key={item.id} stateValue={item.value} stateDisabled={item.disabled} value={item.value} itemTitle={item.title} inputType={item.inputType} options={item.options}/>
 
                 })}
             </EvaluationPage>
             <SendPage formData={formData}/>
             </Carousel>
      
-            <Button onClick={()=> setIndex(index-1)} disabled={index<1} className={classes.text}>Föregående</Button>
-            <Button onClick={()=> setIndex(index+1)} disabled={index>3} className={classes.text}>Nästa</Button>
+            <Button disableRipple onClick={()=> setIndex(index-1)} disabled={index<1} className={classes.text}>Föregående</Button>
+            <Button disableRipple onClick={()=> setIndex(index+1)} disabled={index>3} className={classes.text}>Nästa</Button>
         </div>
     )
 }
