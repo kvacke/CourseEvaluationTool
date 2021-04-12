@@ -16,7 +16,6 @@ const useStyles = createUseStyles({
         position:'relative',
         boxSizing:'border-box',
         marginBottom: '80px',
-        color: props => props ? 'rgba(0, 0, 0, 0.38)' : 'black',
     },
     itemTitle : {
         fontSize:'20px',
@@ -24,7 +23,9 @@ const useStyles = createUseStyles({
         fontFamily:'Roboto',
         width: '75%',
         marginBottom:'20px',
-        fontWeight:500
+        fontWeight:500,
+        opacity: props => props ? 0.4 : 1,
+
 
     },
     disabler:{
@@ -59,9 +60,9 @@ export const Disabler = ({clickHandler, isDisabled, text,id}) => {
     )
 }
 
-const ItemTitle = ({title}) => 
+const ItemTitle = ({title, disabled}) => 
 {
-    const classes = useStyles();
+    const classes = useStyles(disabled);
 
     return(<div className={classes.itemTitle}>{title}</div>)
 }
@@ -96,7 +97,7 @@ const GenericInput = ({inputType, options, itemTitle, value,id,stateDisabled, st
 
     return(
         <div className={classes.genericInput}>
-            <ItemTitle title={itemTitle}/>
+            <ItemTitle disabled ={stateDisabled} title={itemTitle}/>
             <Disabler id={id} text="Avstå" isDisabled={stateDisabled}/>
             <Context.Consumer>
                 {

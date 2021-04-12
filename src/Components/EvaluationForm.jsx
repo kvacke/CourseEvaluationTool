@@ -120,8 +120,8 @@ const EvaluationForm = ({useCarousel}) => {
             <Context.Provider value = {contextFunctions}>
 
             
-            { useCarousel && <PageCarousel formData={formData}/>}
-            { !useCarousel && <PageList/>}
+            <PageCarousel formData={formData}/>
+            
             </Context.Provider>
         </div>
         

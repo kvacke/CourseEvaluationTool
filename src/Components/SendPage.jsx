@@ -68,7 +68,7 @@ const StatusIndicator = ({remaining}) =>{
                 <table>
                     <tbody>
                     {!done && remaining.map((item,index)=>{
-                    return <tr key={index}><td>{item.category}: </td><td>{item.count === 0 ? 'Klar' : item.count}</td></tr>
+                    return <tr key={index}><td>{item.category}: </td><td>{item.count === 0 ? 'Klar' : item.count + ' svar saknas'}</td></tr>
                 })}
                     </tbody>
                 </table>
@@ -84,6 +84,11 @@ const SendPage = ({formData}) => {
     const [remaining, setRemaining] = React.useState([])
     const classes = useStyles()
 
+    const isArrayAndallAreFalse = (value) =>
+    {
+        var allFalse = false;
+    }
+
     const getRemaining = (arr) =>
     { 
         setDone(false);
@@ -96,11 +101,24 @@ const SendPage = ({formData}) => {
 
         arr.forEach((category,categoryIndex)=>
             category.forEach((item)=>{
-                if(item.value === undefined && !item.disabled)
+                if(!item.disabled)
                 {
-                    result[categoryIndex].count += 1
-                    sum += 1;
+                    if(item.value === undefined || item.value === "")
+                    {
+                        result[categoryIndex].count += 1
+                        sum += 1;
+                    }
+                    else if(Array.isArray(item.value))
+                    {
+                        if(item.value.every(w => w.selected === false))
+                        {
+                            result[categoryIndex].count += 1
+                            sum += 1;
+                        }
+                    }
                 }
+
+               
             })
         )
         if(sum < 1)
@@ -119,7 +137,6 @@ const SendPage = ({formData}) => {
     }  
 
     React.useEffect(()=>{
-        console.log("checking for new remaining")
         setRemaining(getRemaining(formData))
     },[formData])
 

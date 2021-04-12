@@ -13,6 +13,7 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "lodash.debounce": "^4.0.8",
     "matter-js": "^0.16.1",
     "poly-decomp": "^0.3.0",
     "react": "^17.0.2",

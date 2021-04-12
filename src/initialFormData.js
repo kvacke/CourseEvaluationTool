@@ -41,6 +41,28 @@ const wordList = [
     'nyttig'
 ]
 
+const wordList2 = [
+    {word :'stimulerande', selected: false},
+    {word :'problemlösning', selected: false},
+    {word :'analyserande', selected: false},
+    {word :'ämnesfördjupning', selected: false},
+    {word :'intellektuellt utmanande', selected: false},
+    {word :'tråkig', selected: false},
+    {word :'effektiv', selected: false},
+    {word :'onödig', selected: false},
+    {word :'aha-upplevelse', selected: false},
+    {word :'utantill-kunskap', selected: false},
+    {word :'engagerande', selected: false},
+    {word :'för svår', selected: false},
+    {word :'för lätt', selected: false},
+    {word :'intressant', selected: false},
+    {word :'spretig', selected: false},
+    {word :'tung', selected: false},
+    {word :'praktisk tillämpning', selected: false},
+    {word :'ineffektiv', selected: false},
+    {word :'nyttig', selected: false},
+]
+
 let agreeOptions = [
     "Instämmer inte alls",
     "Instämmer i låg grad",
@@ -63,8 +85,8 @@ let page0 = [
     },
     {
         id : uuidv4(),
-        inputType:'words',
-        value : undefined,
+        inputType:'words',////////////////////////////////////////////
+        value : wordList2,
         disabled : false,
         title:'Sammanfatta ditt huvudintryck av kursen genom att markera de ord som bäst beskriver kursen för dig',
         options: wordList,
