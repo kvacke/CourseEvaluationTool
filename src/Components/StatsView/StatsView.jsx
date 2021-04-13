@@ -11,8 +11,11 @@ const useStyles = createUseStyles({
     title:{
         fontSize:28,
         marginTop:40,
-        marginBottom:40,
+        marginBottom:10,
         fontWeight:300,
+    },
+    subTitle:{
+        marginBottom:20,
     }
 })
 
@@ -25,6 +28,10 @@ const StatsView = ({formData}) => {
     return(
         <div className={classes.statsView}>
             <div className={classes.title}>Resultat</div>
+            <div className={classes.subTitle}>
+                Här uppdateras kontinuerligt svaren från den pågående kursvärderingen.<br/>
+                Kom gärna tillbaka när kursvärderingen är avslutad för att se det slutgiltiga resultatet.
+                </div>
                 {formData[0].map((item)=>{
                     count++;
                     

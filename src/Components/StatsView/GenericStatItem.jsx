@@ -28,15 +28,18 @@ const useStyles = createUseStyles({
     }
 })
 
+
+
 const GenericStatItem = ({ count, title, type, id, options, value}) => 
 {
+    
     const classes = useStyles(count%2===0);
 
     const getItem = (itemType) =>
     {
         switch(itemType){
             case "ordinalScaleInput":
-                return <OrdinalStatItem options={options} value={value}/>
+                return <OrdinalStatItem options={options} count={count} value={value}/>
             case "words":
                 return <WordStatItem />
             case "textAnswer":

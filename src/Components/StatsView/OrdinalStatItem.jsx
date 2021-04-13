@@ -29,9 +29,6 @@ const adaptedHurNöjd =
     "Mycket missnöjd", "Ganska missnöjd", ["Varken nöjd", "eller missnöjd"], "Ganska nöjd", "Mycket nöjd"
 ]
 
-const  getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min) + min);
-}
 
 
 
@@ -50,20 +47,44 @@ const getAdaptedOptions = (options) =>
     }
 }
 
-const series = [
-  {
-    name: "Antal",
-    data: [4,6,12,6,7]
-  }
+function  getRandomInt(min, max){
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+var data = [
+  [1,1,1,1,1],
+  [4,6,9,21,11],
+  [1,1,1,1,1],
+  [1,2,1,1,1],
+  [1,1,3,1,1],
+  [1,1,5,14,18],
+  [8,6,5,1,4],
+  [7,3,10,14,6],
+  [8,7,10,7,7],
+  [2,1,3,8,18],
+  [6,7,8,6,4],
+  [2,6,7,13,3],
+  [15,6,5,1,1],
+  [3,9,10,2,2],
+  [1,2,7,16,8],
 ]
 
-const OrdinalStatItem = ({options}) =>{
+
+
+const OrdinalStatItem = ({options,count}) =>{
 
   var letters = '6ABC';
   var color = '#';
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * letters.length)];
   }
+  console.log(count)
+  const series = [
+    {
+      name: "Antal",
+      data: data[count]
+    }
+  ]
 
     const settings = {
         grid:{
