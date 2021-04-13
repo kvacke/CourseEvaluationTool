@@ -3,7 +3,7 @@ import {createUseStyles} from 'react-jss';
 import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
-
+import Context from './../Context'
 
 const useStyles = createUseStyles({
     sendPage:{
@@ -150,7 +150,12 @@ const SendPage = ({formData}) => {
                 Tänk på att du inte kommer att kunna göra ändringar i din kursvärdering efter att du skickat in.
             </div>
             <StatusIndicator remaining={remaining}/>
-            <Button onClick={handleClick} variant="contained" color="default">{done ? 'Skicka in och se resultat' : 'Avstå resten och skicka in'}</Button>
+            <Context.Consumer>
+                {value =>
+                <Button onClick={value.handleViewToggle} variant="contained" color="default">{done ? 'Skicka in och se resultat' : 'Avstå resten och skicka in'}</Button>
+                }
+            </Context.Consumer>
+            
             
         </div>
     )

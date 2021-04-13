@@ -51,7 +51,7 @@ const TextAnswerInput = ({sendValue, isDisabled, id, stateValue}) => {
     return(
         <div className={classes.textAnswerInput}>
             <div className={classes.textAreaContainer}>
-                    <TextareaAutosize onChange={handleChange} value={value} spellCheck={false} rowsMin={3} rowsMax={20} className={classes.textArea} placeholder=""/>
+                <TextareaAutosize onChange={handleChange} value={value} spellCheck={false} rowsMin={3} rowsMax={20} className={classes.textArea} placeholder=""/>
             </div>
         </div>  
     )

@@ -11,7 +11,8 @@ import { withStyles} from '@material-ui/core/styles';
 import {Paper} from '@material-ui/core'
 import initialFormData from '../initialFormData'
 import Context from '../Context'
- 
+import StatsView from './StatsView/StatsView'
+import './fades.css';
 //Sparar denna snippet för info-tooltippet
 //<div style={{display:'inline-block',backgroundColor:'lightgrey',position:'relative',top:'4px', height:'16px', width:'16px', borderRadius:'50%'}}>{'  '}</div>{' = Dina insamlade högskolepoäng'}
 
@@ -23,7 +24,6 @@ const useStyles = createUseStyles({
     evaluationForm : {
         margin:'auto',
         width: '1000px',
-        //border:'1px dashed green',
         boxSizing:'border-box',
         marginTop: '30px',
         marginBottom:'80px',
@@ -39,7 +39,16 @@ const useStyles = createUseStyles({
     root:{
         width:'800px',
         margin:'0 auto'
+    },
+    toggler:{
+        position:'absolute',
+        top: 0,
+    },
+
+    resultsView:{
+        display:'none'
     }
+    
 })
 
 const HtmlTooltip = withStyles((theme) => ({
@@ -53,19 +62,23 @@ const HtmlTooltip = withStyles((theme) => ({
   }))(Tooltip);
 
 const EvaluationForm = ({useCarousel}) => {
-    const classes = useStyles();
     const classData = generateClassData(getRandomInt(1,4),getRandomInt(5,10),getRandomInt(1,2),getRandomInt(0,1),)
     const [formData, setFormData] = React.useState(initialFormData)
+    const [formViewClasses, setFormViewClasses] = React.useState(["formView"])
+    const [resultsViewClasses, setResultsViewClasses] = React.useState(["resultsView","hide"])
+    const [formView, toggleFormView] = React.useState(true)
+
+
+
+    const classes = useStyles();
 
     const setValueById = (id,value) =>
     {   
-        console.log("attempting to set...")
         const arr = formData;
         arr.forEach((page) =>{
             page.forEach((item) => {
                 if(item.id === id)
                 {
-                    console.log("setting!")
                     item.value = value;
                 }
             })
@@ -88,15 +101,30 @@ const EvaluationForm = ({useCarousel}) => {
         console.log(formData);
     }
 
+    const handleViewToggle = () =>
+    {
+        // setFormViewClasses([...formViewClasses, "fadeOut"])
+        // setTimeout(() => {
+        //     setFormViewClasses([...formViewClasses, "hide"])
+        //     setResultsViewClasses(resultsViewClasses.filter(c => c !== "hide"))
 
+        // },1000)
+
+        toggleFormView(!formView)
+
+    }
     
-    const contextFunctions = {setValueById, setDisabledStatusById}
+
+    const contextFunctions = {setValueById, setDisabledStatusById, handleViewToggle}
 
     return(
         
         <div className={classes.evaluationForm}>
 
+            {/* <button onClick={handleViewToggle} className={classes.toggler}>Växla vy</button> */}
             <div style={{position:'relative'}}>
+
+
             <HtmlTooltip
             placement="left-start"
             title={<>
@@ -104,7 +132,6 @@ const EvaluationForm = ({useCarousel}) => {
                     <div>Varje högskolepoäng som du har läst på Uppsala Universitet representeras här av en boll.
                     Bollar i samma färg tillhör en viss kurs som du har läst.<br/><br/>
                     Ju fler kurser du läser desto djupare blir ditt bollhav!</div>  
-                
 
             </>}>
                 <IconButton style={{position:'absolute', top:'0px', right:'100px'}}>
@@ -116,13 +143,19 @@ const EvaluationForm = ({useCarousel}) => {
             </Paper>
 
             </div>
-            <div className={classes.courseTitle}>Informationssystem B: Algoritmer och datastrukturer</div>
-            <Context.Provider value = {contextFunctions}>
 
-            
+           
+            {formView && 
+            <Context.Provider value = {contextFunctions}>
             <PageCarousel formData={formData}/>
-            
             </Context.Provider>
+            }
+
+            {!formView &&
+            <StatsView formData = {formData}/>
+            }
+            
+
         </div>
         
     )
