@@ -5,10 +5,10 @@ import Tab from '@material-ui/core/Tab';
 
 
 const StyledTabs = withStyles({
-  root:{
+  root: {
   },
-  flexContainer:{
-    justifyContent:'center',
+  flexContainer: {
+    justifyContent: 'center',
   },
   indicator: {
     display: 'flex',
@@ -48,36 +48,36 @@ const SendTab = withStyles((theme) => ({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    
+
   },
   padding: {
   },
   demo2: {
     backgroundColor: '#FFFFFF',
-    width:'800px',
-    margin:'0 auto',
-    marginTop:'20px',
-    marginBottom:'50px',
+    width: '800px',
+    margin: '0 auto',
+    marginTop: '20px',
+    marginBottom: '50px',
   },
 }));
 
-export default function NewNavbar({clickHandler,index}) {
+export default function NewNavbar({ clickHandler, index }) {
   const classes = useStyles();
-//   const [value, setValue] = React.useState(0);
+  //   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     clickHandler(newValue)
   };
 
   return (
-      <div className={classes.demo2}>
-        <StyledTabs value={index} onChange={handleChange}>
-          <StyledTab label="Kursen i stort" />
-          <StyledTab label="Förutsättningar" />
-          <StyledTab label="Under kursen" />
-          <StyledTab label="Resultat" />
-          <SendTab label="Skicka in" />
-        </StyledTabs>
-      </div>
+    <div className={classes.demo2}>
+      <StyledTabs value={index} onChange={handleChange}>
+        <StyledTab label="Kursen i stort" />
+        <StyledTab label="Förutsättningar" />
+        <StyledTab label="Under kursen" />
+        <StyledTab label="Resultat" />
+        <SendTab label="Skicka in" />
+      </StyledTabs>
+    </div>
   );
 }
