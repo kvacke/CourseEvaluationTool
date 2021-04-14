@@ -16,6 +16,8 @@ const useStyles = createUseStyles({
     },
     subTitle:{
         marginBottom:20,
+        width:600,
+        margin:'0 auto'
     }
 })
 
@@ -27,9 +29,10 @@ const StatsView = ({formData}) => {
 
     return(
         <div className={classes.statsView}>
-            <div className={classes.title}>Resultat</div>
+            <div className={classes.title}>Tack!</div>
             <div className={classes.subTitle}>
-                Här uppdateras kontinuerligt svaren från den pågående kursvärderingen.<br/>
+                Här uppdateras kontinuerligt svaren från den här kursens pågående kursvärdering.<br/>
+                I varje diagram nedan kan du se hur kursens deltagare har svarat hittills.
                 Kom gärna tillbaka när kursvärderingen är avslutad för att se det slutgiltiga resultatet.
                 </div>
                 {formData[0].map((item)=>{

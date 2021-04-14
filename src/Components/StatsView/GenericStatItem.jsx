@@ -16,7 +16,6 @@ const useStyles = createUseStyles({
         boxSizing:'border-box',
         padding: 30,
         backgroundColor:props => props ? 'white' : 'white'
-
     },
     title:{
         fontSize:'20px',
@@ -24,7 +23,6 @@ const useStyles = createUseStyles({
         fontFamily:'Roboto',
         width: '80%',
         fontWeight:500,
-        
     }
 })
 

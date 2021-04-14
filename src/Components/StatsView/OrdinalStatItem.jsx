@@ -58,7 +58,7 @@ var data = [
   [1,2,1,1,1],
   [1,1,3,1,1],
   [1,1,5,14,18],
-  [8,6,5,1,4],
+  [2,6,15,7,1],
   [7,3,10,14,6],
   [8,7,10,7,7],
   [2,1,3,8,18],
@@ -73,7 +73,7 @@ var data = [
 
 const OrdinalStatItem = ({options,count}) =>{
 
-  var letters = '6ABC';
+  var letters = '9ABC';
   var color = '#';
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * letters.length)];

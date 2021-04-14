@@ -26,7 +26,7 @@ const useStyles = createUseStyles({
     text:{
         color:'green',
         textTransform:'none'
-    }
+    },
 })
 
 const PageCarousel = ({formData}) => {
@@ -41,15 +41,28 @@ const PageCarousel = ({formData}) => {
       x[i].style.transition = '0.3s'
     }
 
-    React.useEffect(()=>{
-        if(index ===4)
+    const handleClick = (isNext) => 
+    {
+        if(isNext && index <4)
         {
+            setIndex(index+1)
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth',
               })
         }
-    },[index])
+        else if(!isNext && index > 0)
+        {
+            setIndex(index-1)
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              })
+        }
+    }
+
+
+
     return(
         <div>
             <NewNavbar index={index} clickHandler={setIndex}/>
@@ -86,9 +99,8 @@ const PageCarousel = ({formData}) => {
             </EvaluationPage>
             <SendPage formData={formData}/>
             </Carousel>
-     
-            <Button disableRipple onClick={()=> setIndex(index-1)} disabled={index<1} className={classes.text}>Föregående</Button>
-            <Button disableRipple onClick={()=> setIndex(index+1)} disabled={index>3} className={classes.text}>Nästa</Button>
+            <Button disableRipple onClick={()=> handleClick(false)} disabled={index<1} className={classes.text}>Föregående</Button>
+            <Button disableRipple onClick={()=> handleClick(true)} disabled={index>3} className={classes.text}>Nästa</Button>
         </div>
     )
 }
