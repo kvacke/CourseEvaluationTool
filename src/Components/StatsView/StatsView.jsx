@@ -1,7 +1,7 @@
 import React from 'react'
 import {createUseStyles} from 'react-jss'
 import GenericStatItem from './GenericStatItem'
-
+import ThankYou from './ThankYou'
 
 const useStyles = createUseStyles({
     statsView:{
@@ -14,7 +14,9 @@ const useStyles = createUseStyles({
         marginBottom:10,
         fontWeight:300,
     },
-    thankyou:{
+    subTitle:{
+        marginTop:20,
+
         marginBottom:20,
         width:600,
         margin:'0 auto'
@@ -37,13 +39,8 @@ const StatsView = ({formData}) => {
 
     return(
         <div className={classes.statsView}>
-            <div className={classes.title}>Tack för ditt bidrag!</div>
-            <div className={classes.thankyou}>
-                För varje inskickad kursvärdering får vi en klarare bild av hur studenterna upplever institutionens kurser.
-                Utan dem blir det mycket svårare att veta hur kurserna kan göras bättre.
-                Tack för att du bidrar till institutionens utbildningskvalitet.
-                <br/>
-                <br/>
+                <ThankYou/>
+                <div className={classes.subTitle}>
                 Här uppdateras kontinuerligt svaren från den här kursens pågående kursvärdering.<br/>
                 I varje diagram nedan kan du se hur kursens deltagare har svarat hittills.
                 Kom gärna tillbaka när kursvärderingen är avslutad för att se det slutgiltiga resultatet.
