@@ -64,7 +64,7 @@ const SideMenuBurger = ({clickHandler}) =>
     return(
         <div className={classes.topContainer}>
             <FontAwesomeIcon onClick={handleClick} className={classes.burger} icon={faBars} />
-            <div className={classes.code}>Info</div>
+            <div className={classes.code}>Meny</div>
         </div>
     )
 }
