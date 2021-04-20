@@ -14,10 +14,18 @@ const useStyles = createUseStyles({
         marginBottom:10,
         fontWeight:300,
     },
-    subTitle:{
+    thankyou:{
         marginBottom:20,
         width:600,
         margin:'0 auto'
+    },
+    bottomInfo:{
+        marginTop:50,
+        width:600,
+        margin:'0 auto',
+        fontStyle:'italic',
+        textAlign:'left'
+
     }
 })
 
@@ -29,8 +37,13 @@ const StatsView = ({formData}) => {
 
     return(
         <div className={classes.statsView}>
-            <div className={classes.title}>Tack!</div>
-            <div className={classes.subTitle}>
+            <div className={classes.title}>Tack för ditt bidrag!</div>
+            <div className={classes.thankyou}>
+                För varje inskickad kursvärdering får vi en klarare bild av hur studenterna upplever institutionens kurser.
+                Utan dem blir det mycket svårare att veta hur kurserna kan göras bättre.
+                Tack för att du bidrar till institutionens utbildningskvalitet.
+                <br/>
+                <br/>
                 Här uppdateras kontinuerligt svaren från den här kursens pågående kursvärdering.<br/>
                 I varje diagram nedan kan du se hur kursens deltagare har svarat hittills.
                 Kom gärna tillbaka när kursvärderingen är avslutad för att se det slutgiltiga resultatet.
@@ -53,6 +66,10 @@ const StatsView = ({formData}) => {
                     count++
                         return <GenericStatItem count={count} title={item.title} key={item.id} id={item.id} value={item.value} type={item.inputType} options={item.options}/>
                     })}
+            <div className={classes.bottomInfo}>
+                
+                Du har nu kommit till slutet av testmiljön. När alla uppgifter är slutförda och du känner dig färdig med att utforska sidan kan du återgå till instruktionerna.
+                </div>
         </div>
     )
 }

@@ -60,7 +60,8 @@ const WordStatItem = ({options}) =>{
           bar:{
             horizontal:true,
             dataLabels: {
-                position: 'bottom'
+                position:'bottom',
+                
               },
           }
         },
