@@ -8,9 +8,9 @@ const useStyles = createUseStyles({
         position:'absolute',
         userSelect:'none',
         top:'70px',
-        left:'110px',
+        left:'100px',
         fontFamily:'Lato',
-        fontSize:'17px',
+        fontSize:'1rem',
         textAlign:'left',
         display: props => props ? 'inline-block' : 'none',
         
@@ -28,7 +28,7 @@ const useStyles = createUseStyles({
     },
     topContainer:{
         position:'absolute',
-        left:'110px',
+        left:'100px',
         top:'40px',
         color: 'rgb(4, 84, 164)',
         display:'flex',
