@@ -71,7 +71,7 @@ const EvaluationForm = ({useCarousel}) => {
     const [formData, setFormData] = React.useState(initialFormData)
     const [formViewClasses, setFormViewClasses] = React.useState(["formView"])
     const [resultsViewClasses, setResultsViewClasses] = React.useState(["resultsView","hide"])
-    const [formView, toggleFormView] = React.useState(false)
+    const [formView, toggleFormView] = React.useState(true)
 
 
 
