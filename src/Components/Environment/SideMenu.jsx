@@ -37,7 +37,7 @@ const useStyles = createUseStyles({
         userSelect:'none'
     },
     code:{
-        marginLeft:'20px',
+        marginLeft:'10px',
     },
     burger:{
         fontSize:'22px',
@@ -64,7 +64,7 @@ const SideMenuBurger = ({clickHandler}) =>
     return(
         <div className={classes.topContainer}>
             <FontAwesomeIcon onClick={handleClick} className={classes.burger} icon={faBars} />
-            <div className={classes.code}>2IS012 76013</div>
+            <div className={classes.code}>Info</div>
         </div>
     )
 }
@@ -90,7 +90,7 @@ const SideMenu = () => {
         <div>
             <SideMenuBurger clickHandler={handleClick}/>
             <div className={classes.sideMenu}>
-            <div className={classes.courseTitle}>Informationssystem B : Algoritmer och datastrukturer</div>
+            {/* <div className={classes.courseTitle}>Informationssystem B : Algoritmer och datastrukturer</div> */}
             <SideMenuItem text="Hem"/>
             <SideMenuItem text="Kursplan"/>
             <SideMenuItem text="Schema"/>
