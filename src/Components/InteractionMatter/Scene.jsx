@@ -32,7 +32,7 @@ class Scene extends Component {
       var min = 0.001,
       max = 0.001,
       number = Math.random() * (max - min) + min;
-      let ball = Matter.Bodies.circle(10, 10, 5, { restitution: 0.0, render: {fillStyle:'grey'} })
+      let ball = Matter.Bodies.circle(10, 10, 5, { restitution: 0.0, render: {fillStyle:'grey', cursor:'pointer'} })
       Matter.World.add(this.state.engine.world, ball)
       Matter.Body.applyForce( ball, {x: ball.position.x, y: ball.position.y}, {x: number, y: 0 });
     }

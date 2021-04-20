@@ -71,14 +71,13 @@ var data = [
 
 
 
-const OrdinalStatItem = ({options,count}) =>{
+const OrdinalStatItem = ({options,count, value}) =>{
 
   var letters = '9ABC';
   var color = '#';
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * letters.length)];
   }
-  console.log(count)
   const series = [
     {
       name: "Antal",

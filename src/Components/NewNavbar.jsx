@@ -2,6 +2,9 @@ import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { Badge } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 
 const StyledTabs = withStyles({
@@ -61,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewNavbar({clickHandler,index}) {
+export default function NewNavbar({clickHandler,index, formData}) {
   const classes = useStyles();
 //   const [value, setValue] = React.useState(0);
 
@@ -69,13 +72,44 @@ export default function NewNavbar({clickHandler,index}) {
     clickHandler(newValue)
   };
 
+  function isStepComplete(step) {
+    if(step === 4) return;
+    var isComplete = true;
+    formData[step].forEach(item =>
+      {
+        if(!item.disabled)
+        {
+          if(item.value === undefined || item.value === "")
+          {
+            isComplete=false;
+          }
+          else if(Array.isArray(item.value))
+          {
+            if(item.value.every(w => w.selected === false))
+            {
+                isComplete = false;
+            }
+          }
+        }
+
+      })
+     
+    return isComplete;
+
+  }
+
+  const getTextWithCheck = (text) => {
+    return <><span>{text} <FontAwesomeIcon icon={faCheck}/></span></>
+  }
+
   return (
       <div className={classes.demo2}>
         <StyledTabs value={index} onChange={handleChange}>
-          <StyledTab label="Kursen i stort" />
-          <StyledTab label="Förutsättningar" />
-          <StyledTab label="Under kursen" />
-          <StyledTab label="Resultat" />
+          
+          <StyledTab label={isStepComplete(0) ? getTextWithCheck("Kursen i stort") : 'Kursen i stort'}/>
+          <StyledTab label={isStepComplete(1) ? getTextWithCheck("Förutsättningar") : 'Förutsättningar'} />
+          <StyledTab label={isStepComplete(2) ? getTextWithCheck("Under kursen") : 'Under kursen'} />
+          <StyledTab label={isStepComplete(3) ? getTextWithCheck("Resultat") : 'Resultat'} />
           <SendTab label="Skicka in" />
         </StyledTabs>
       </div>

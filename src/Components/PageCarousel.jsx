@@ -6,7 +6,7 @@ import Carousel from '@brainhubeu/react-carousel'
 import GenericInput from './Inputs/GenericInput'
 import Button from '@material-ui/core/Button';
 import SendPage from './SendPage'
-
+import StepperNavbar from './StepperNavbar'
 
 
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -65,8 +65,8 @@ const PageCarousel = ({formData}) => {
 
     return(
         <div>
-            <NewNavbar index={index} clickHandler={setIndex}/>
-
+            <NewNavbar formData={formData} index={index} clickHandler={setIndex}/>
+            {/* <StepperNavbar index={index} clickHandler={setIndex} formData={formData}/> */}
             <Carousel
             value={index ? index : 0}
             onChange={onChange}

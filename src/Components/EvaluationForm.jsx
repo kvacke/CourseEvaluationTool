@@ -38,7 +38,12 @@ const useStyles = createUseStyles({
     },
     root:{
         width:'800px',
-        margin:'0 auto'
+        margin:'0 auto',
+        cursor:'grab',
+        "&:active":
+        {
+            cursor:'grabbing'
+        }
     },
     toggler:{
         position:'absolute',
