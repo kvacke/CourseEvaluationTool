@@ -64,7 +64,7 @@ const useStyles = createUseStyles({
 const OldCourseEval = (props) => {
     const classes = useStyles();
     const [pageNumber, setPageNumber] = useState(0);
-    let shownContent;
+
     let content = [];
     content.push(
     <div className={pageNumber === 0 ? classes.shown : classes.hidden}>
