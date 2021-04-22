@@ -8,8 +8,7 @@ import {createUseStyles} from 'react-jss';
 const useStyles = createUseStyles({
     container:{
         fontFamily: "Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif",
-        margin: 10,
-        marginLeft: 300,
+        margin: '0 auto',
         maxWidth: 1090,
         color: "#333"
     },
