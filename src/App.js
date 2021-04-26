@@ -1,15 +1,14 @@
-import './App.css';
-import EvaluationForm from './Components/EvaluationForm'
-import Sidebar from './Components/Environment/Sidebar'
-import SideMenu from './Components/Environment/SideMenu'
-import OldCourseEval from './Old Evaluation/OldCourseEval'
+import "./App.css";
+import Sidebar from "./Old Evaluation/Environment/Sidebar";
+import SideMenu from "./Old Evaluation/Environment/SideMenu";
+import OldCourseEval from "./Old Evaluation/OldCourseEval";
 
 function App() {
   return (
     <div className="App">
-      <Sidebar/>
-      <SideMenu/>
-      <OldCourseEval/>
+      <Sidebar />
+      <SideMenu />
+      <OldCourseEval />
     </div>
   );
 }
