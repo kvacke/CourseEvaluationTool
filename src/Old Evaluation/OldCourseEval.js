@@ -10,6 +10,7 @@ const useStyles = createUseStyles({
     fontFamily: "Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif",
     margin: "0 auto",
     marginTop: 40,
+    marginLeft: 0,
     width: "60%",
     minWidth: 640,
     color: "#333",
