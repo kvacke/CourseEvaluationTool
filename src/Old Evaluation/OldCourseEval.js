@@ -11,6 +11,7 @@ const useStyles = createUseStyles({
     margin: "0 auto",
     marginTop: 40,
     width: "60%",
+    minWidth: 640,
     color: "#333",
   },
   h2: {
