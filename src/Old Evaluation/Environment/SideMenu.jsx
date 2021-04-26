@@ -12,9 +12,7 @@ const useStyles = createUseStyles({
         fontFamily:'Lato',
         fontSize:'1rem',
         textAlign:'left',
-        display: props => props ? 'inline-block' : 'none',
-        
-        
+        display: props => props ? 'inline-block' : 'none',       
     },
     sideMenuItem:{
         color: props => props ? 'black' : 'rgb(4, 84, 164)',
