@@ -35,6 +35,7 @@ const GenericStatItem = ({ count, title, type, id, options, value}) =>
 
     const getItem = (itemType) =>
     {
+        
         switch(itemType){
             case "ordinalScaleInput":
                 return <OrdinalStatItem options={options} count={count} value={value}/>

@@ -73,11 +73,7 @@ var data = [
 
 const OrdinalStatItem = ({options,count, value}) =>{
 
-  var letters = '9ABC';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * letters.length)];
-  }
+  
   const series = [
     {
       name: "Antal",
@@ -85,64 +81,99 @@ const OrdinalStatItem = ({options,count, value}) =>{
     }
   ]
 
-    const settings = {
-        grid:{
-          show:false
-        },
-        plotOptions:{
-          bar:{
-            horizontal:false,
 
+  const getColors = () => {
+    var colors = ['lightgrey','lightgrey','lightgrey','lightgrey','lightgrey']
+    var letters = '9ABC';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * letters.length)];
+    }
+
+
+    if(value !== undefined)
+    {
+      colors[value] = "rgb(32, 106, 176)";
+      console.log(colors)
+
+    }
+    return colors;
+  }
+  
+
+  const settings = {
+      grid:{
+        show:false
+      },
+      plotOptions:{
+        bar:{
+          horizontal:false,
+          distributed : true,
+
+        }
+      },
+      yaxis:{
+        show:false,
+        max: Math.max(...series[0].data)
+      },
+      chart: {
+        id: "basic-bar",
+        toolbar: {
+          show: false
+        }
+      },
+      xaxis: {
+        categories: getAdaptedOptions(options),
+        labels:{
+          style:{
+            fontWeight:'500'
           }
-        },
-        yaxis:{
-          show:false,
-          max: Math.max(...series[0].data)
-        },
-        chart: {
-          id: "basic-bar",
-          toolbar: {
-            show: false
-          }
-        },
-        xaxis: {
-          categories: getAdaptedOptions(options),
           
-        },
-        states:{
-          hover:{
-            active:{
-              type:'none'
-            }
+        }
+        
+      },
+      legend:{
+        show:false
+      },
+      states:{
+        hover:{
+          filter:{
+            type:'none',
           }
         },
-        tooltip:{
-          enabled:false
-        },
-        colors:[color],
-        dataLabels:{
-          style: {
-            colors: ['white'],
-            fontSize:'16px',
+        active:{
+          filter:{
+            type:'none',
           }
+        },
+      },
+      tooltip:{
+        enabled:false
+      },
+      colors: getColors(),
+      dataLabels:{
+        style: {
+          colors: ['white'],
+          fontSize:'16px',
         }
       }
+    }
 
 
 
-    const classes = useStyles()
-    return(
-        <div  className={classes.ordinalStatItem}>
-            <Chart
-            options= {settings}
-            series = {series}
-            type ="bar"
-            width ="550"
-            height ="300"
-            />
+  const classes = useStyles()
+  return(
+      <div  className={classes.ordinalStatItem}>
+          <Chart
+          options= {settings}
+          series = {series}
+          type ="bar"
+          width ="550"
+          height ="300"
+          />
 
-        </div>
-    )
+      </div>
+  )
 }
 
 export default OrdinalStatItem;

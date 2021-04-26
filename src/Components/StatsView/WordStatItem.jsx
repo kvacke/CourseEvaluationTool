@@ -75,6 +75,20 @@ const WordStatItem = ({options}) =>{
             show: false
           }
         },
+        states:{
+          hover:{
+            filter:{
+              type:'darken',
+              value:0.5,
+            }
+          },
+          active:{
+            filter:{
+              type:'darken',
+              value:0.2,
+            }
+          },
+        },
         xaxis: {
           categories: wordList,
           
@@ -89,7 +103,7 @@ const WordStatItem = ({options}) =>{
         tooltip:{
           enabled:false
         },
-        colors:['rgba(166,106,106,0.85)']
+        colors:['rgb(32, 106, 176)']
       }
 
 
