@@ -27,12 +27,12 @@ const useStyles = createUseStyles({
         boxSizing:'border-box',
         marginTop: '30px',
         marginBottom:'80px',
-    },
+        },
     courseTitle:{
         display:'none',
         fontSize:'35px',
         margin:'30px'
-    },
+        },
     infoButton:{
         position:'absolute'
     },

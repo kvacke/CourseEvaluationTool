@@ -18,8 +18,6 @@ const useStyles = createUseStyles({
         userSelect:'none',
         color:'#575757'
     },
-
-
     icon:{
         fontSize:'25px'
     },
