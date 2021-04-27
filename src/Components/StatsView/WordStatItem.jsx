@@ -55,14 +55,13 @@ const WordStatItem = ({options,value}) =>{
 
 
     const getColors = () => {
-      var colors = ['rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)']
       
       var colors = [];
       value.forEach((item) =>
       {
         if(!item.selected)
         {
-          colors.push('rgb(121, 178, 232)')
+          colors.push('grey')
         }
         else{
           colors.push('rgb(32, 106, 176)')
