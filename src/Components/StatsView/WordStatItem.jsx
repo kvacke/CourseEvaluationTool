@@ -61,7 +61,7 @@ const WordStatItem = ({options,value}) =>{
       {
         if(!item.selected)
         {
-          colors.push('grey')
+          colors.push('#bdbdbd')
         }
         else{
           colors.push('rgb(32, 106, 176)')

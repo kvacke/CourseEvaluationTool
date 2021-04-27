@@ -83,13 +83,13 @@ const OrdinalStatItem = ({options,count, value}) =>{
 
 
   const getColors = () => {
-    var colors = ['grey','grey','grey','grey','grey']
+    var colors = ['#bdbdbd','#bdbdbd','#bdbdbd','#bdbdbd','#bdbdbd']
     var letters = '9ABC';
     var color = '#';
     for (var i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * letters.length)];
     }
-
+    
 
     if(value !== undefined)
     {
