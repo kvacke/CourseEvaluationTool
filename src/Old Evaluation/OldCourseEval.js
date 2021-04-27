@@ -57,6 +57,7 @@ const useStyles = createUseStyles({
     border: "1px solid",
     borderBottomColor: "#9b9b9b",
     fontFamily: "Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif",
+    cursor: "pointer",
   },
   shown: {},
   hidden: {
@@ -67,7 +68,7 @@ const useStyles = createUseStyles({
 const OldCourseEval = (props) => {
   const classes = useStyles();
   const [pageNumber, setPageNumber] = useState(0);
-
+  const [showSurveryLink, setShowSurveyLink] = useState(false);
   let content = [];
   content.push(
     <div className={pageNumber === 0 ? classes.shown : classes.hidden}>
@@ -279,14 +280,26 @@ const OldCourseEval = (props) => {
       />
       <button
         className={classes.sendButton}
-        onClick={() =>
+        onClick={() => {
           alert(
-            "Här skickas användaren vidare till nästa kursvärderinger eller attrakdiff"
-          )
-        }
+            "Tack! Du är nu klar med interaktionen. Nu finns en länk till enkäten längst ner på sidan, tryck på den för att gå vidare!"
+          );
+          setShowSurveyLink(true);
+        }}
       >
         Spara svar
       </button>
+      {showSurveryLink ? (
+        <a
+          href={
+            "https://esurvey.uid.com/survey/#42b15f72-0956-432e-b7fa-350e81f9a62c"
+          }
+        >
+          Tryck här för att komma till enkäten!
+        </a>
+      ) : (
+        <></>
+      )}
     </div>
   );
 
