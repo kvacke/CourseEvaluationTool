@@ -8,7 +8,7 @@ const useStyles = createUseStyles({
     thankYou:{
         display: props => props ? 'flex' : 'none',
         margin:'0 auto',
-        background: "linear-gradient(145deg, rgba(255,255,255,0.3) 0%, transparent 45%) #206ab0;",
+        background: "linear-gradient(145deg, rgba(255,255,255,0.3) 0%, transparent 45%) #8c1837;",
         color:'white',
         width:500,
         flexDirection:'column',

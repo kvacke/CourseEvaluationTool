@@ -45,13 +45,33 @@ const series = [
   }
 ]
 
-const WordStatItem = ({options}) =>{
+const WordStatItem = ({options,value}) =>{
 
     var letters = '6ABCD';
     var color = '#';
     for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * letters.length)];
     }
+
+
+    const getColors = () => {
+      var colors = ['rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)']
+      
+      var colors = [];
+      value.forEach((item) =>
+      {
+        if(!item.selected)
+        {
+          colors.push('rgb(121, 178, 232)')
+        }
+        else{
+          colors.push('rgb(32, 106, 176)')
+        }
+      })
+
+      return colors;
+    }
+
     const settings = {
         grid:{
           show:false
@@ -59,6 +79,7 @@ const WordStatItem = ({options}) =>{
         plotOptions:{
           bar:{
             horizontal:true,
+            distributed : true,
             dataLabels: {
                 position:'bottom',
                 
@@ -68,6 +89,21 @@ const WordStatItem = ({options}) =>{
         yaxis:{
           
           categories: wordList,
+        },
+        legend: {
+          show: false,
+        },
+        states:{
+          hover:{
+            filter:{
+              type:'none',
+            }
+          },
+          active:{
+            filter:{
+              type:'none',
+            }
+          },
         },
         chart: {
           id: "basic-bar",
@@ -103,7 +139,7 @@ const WordStatItem = ({options}) =>{
         tooltip:{
           enabled:false
         },
-        colors:['rgb(32, 106, 176)']
+        colors: getColors()
       }
 
 

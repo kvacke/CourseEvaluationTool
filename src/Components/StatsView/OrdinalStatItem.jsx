@@ -83,7 +83,7 @@ const OrdinalStatItem = ({options,count, value}) =>{
 
 
   const getColors = () => {
-    var colors = ['lightgrey','lightgrey','lightgrey','lightgrey','lightgrey']
+    var colors = ['rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)','rgb(121, 178, 232)']
     var letters = '9ABC';
     var color = '#';
     for (var i = 0; i < 6; i++) {
@@ -95,7 +95,7 @@ const OrdinalStatItem = ({options,count, value}) =>{
     {
       colors[value] = "rgb(32, 106, 176)";
       console.log(colors)
-
+      
     }
     return colors;
   }

@@ -40,7 +40,7 @@ const GenericStatItem = ({ count, title, type, id, options, value}) =>
             case "ordinalScaleInput":
                 return <OrdinalStatItem options={options} count={count} value={value}/>
             case "words":
-                return <WordStatItem />
+                return <WordStatItem value={value} />
             case "textAnswer":
                 return <TextStatItem title={title}/>
             default:
