@@ -40,6 +40,11 @@ const StatsView = ({formData}) => {
     return(
         <div className={classes.statsView}>
                 <ThankYou/>
+
+                <div className={classes.title}>
+                    Resultat
+                </div>
+
                 <div className={classes.subTitle}>
                 Här uppdateras kontinuerligt svaren från den här kursens pågående kursvärdering.<br/>
                 I varje diagram nedan kan du se hur kursens deltagare har svarat hittills och med dina svar markerat i en mörkare färg.
@@ -65,7 +70,9 @@ const StatsView = ({formData}) => {
                     })}
             <div className={classes.bottomInfo}>
                 
-                Du har nu kommit till slutet av testmiljön. När alla uppgifter är slutförda och du känner dig färdig med att utforska sidan kan du återgå till instruktionerna.
+                Du har nu kommit till slutet av testmiljön. När du känner dig färdig med att se resultaten
+                ber vi dig utvärdera detta verktyg genom att  <a href="https://esurvey.uid.com/survey/#5a3ad5a4-4760-4796-91b5-4231a60bbbaf">klicka här.</a>
+                <br/> (Byt från tyska till engelska uppe i högra hörnet när du klickat på länken!)
                 </div>
         </div>
     )

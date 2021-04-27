@@ -88,7 +88,7 @@ let page0 = [
         inputType:'words',////////////////////////////////////////////
         value : wordList2,
         disabled : false,
-        title:'Sammanfatta ditt huvudintryck av kursen genom att markera de ord som bäst beskriver kursen för dig',
+        title:'Sammanfatta ditt huvudintryck av kursen genom att markera de ord som bäst beskriver kursen för dig.',
         options: wordList,
         category:'Kursen i stort'
     },
@@ -127,7 +127,7 @@ let page1 = [
         inputType:'ordinalScaleInput',
         value : undefined,
         disabled : false,
-        title:'Jag har överlag vetat vad som förväntas av mig i den här kursen i relation till kursmålen',
+        title:'Jag har överlag vetat vad som förväntas av mig i den här kursen i relation till kursmålen.',
         options: agreeOptions,
         category:'Förutsättningar'
     },
@@ -148,7 +148,7 @@ let page2 = [
         inputType:'ordinalScaleInput',
         value : undefined,
         disabled : false,
-        title:'Jag anser att kursens krav på arbetsinsats motsvarar antalet kurspoäng',
+        title:'Jag anser att kursens krav på arbetsinsats motsvarar antalet kurspoäng.',
         options: agreeOptions,
         category:'Under kursen'
     },
@@ -157,7 +157,7 @@ let page2 = [
         inputType:'ordinalScaleInput',
         value : undefined,
         disabled : false,
-        title:'Studierna på kursen har varit intellektuellt utmananade',
+        title:'Studierna på kursen har varit intellektuellt utmananade.',
         options: agreeOptions,
         category:'Under kursen'
     },
@@ -166,7 +166,7 @@ let page2 = [
         inputType:'ordinalScaleInput',
         value : undefined,
         disabled : false,
-        title:'Läraren/-na har varit bra på att förklara kursinnehåll som varit svårt att förstå i kursen',
+        title:'Läraren/-na har varit bra på att förklara kursinnehåll som varit svårt att förstå i kursen.',
         options: grader,
         category:'Under kursen'
     },
