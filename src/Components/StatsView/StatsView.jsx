@@ -47,7 +47,7 @@ const StatsView = ({formData}) => {
 
                 <div className={classes.subTitle}>
                 Här uppdateras kontinuerligt svaren från den här kursens pågående kursvärdering.<br/>
-                I varje diagram nedan kan du se hur kursens deltagare har svarat hittills och med dina svar markerat i en mörkare färg.
+                I varje diagram nedan kan du se hur kursens deltagare har svarat hittills och med dina svar markerade i blå färg.
                 Kom gärna tillbaka när kursvärderingen är avslutad för att se det slutgiltiga resultatet.
                 </div>
                 {formData[0].map((item)=>{
