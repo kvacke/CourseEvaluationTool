@@ -17,6 +17,10 @@ const useStyles = createUseStyles({
         textAlign:'left',
         marginBottom:20,
     },
+    chosen:{
+        fontStyle:'italic',
+        marginBottom: 10,
+    }
 
 })
 
@@ -64,6 +68,8 @@ const TextStatItem = ({title}) =>{
 
     return(
         <div className={classes.textStatItem}>
+            <div className={classes.chosen}>(utvalda svar)</div>
+            
             {getTextCards(title)}
         </div>
     )
