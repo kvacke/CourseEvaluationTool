@@ -67,10 +67,10 @@ const StatsView = ({formData}) => {
                         return <GenericStatItem count={count} title={item.title} key={item.id} id={item.id} value={item.value} type={item.inputType} options={item.options}/>
                     })}
             <div className={classes.bottomInfo}>
-                
-                Du har nu kommit till slutet av testmiljön. När du känner dig färdig med att se resultaten
+                 
+                Du har nu kommit till slutet av testmiljön.<br/> När du känner dig färdig 
                 ber vi dig utvärdera detta verktyg med enkäten "AttrakDiff" genom att  <a href="https://esurvey.uid.com/survey/#5a3ad5a4-4760-4796-91b5-4231a60bbbaf">klicka här.</a>
-                <br/> (Byt från tyska till engelska uppe i högra hörnet när du klickat på länken!)
+                  {" "}(Byt från tyska till engelska uppe i högra hörnet när du klickat på länken!)
                 </div>
         </div>
     )
