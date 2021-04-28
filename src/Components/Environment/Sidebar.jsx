@@ -34,11 +34,8 @@ const useStyles = createUseStyles({
         },
         cursor:'pointer'
     },
-
-
     logo:{
         fontSize:'27px',
-        //color:'rgb(153,0,0)'
         color:'grey'
     },
     logoContainer:{

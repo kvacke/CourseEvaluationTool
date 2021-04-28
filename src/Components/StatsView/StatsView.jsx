@@ -5,8 +5,6 @@ import ThankYou from './ThankYou'
 
 const useStyles = createUseStyles({
     statsView:{
-
-
     },
     title:{
         fontSize:28,

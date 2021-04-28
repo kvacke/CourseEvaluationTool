@@ -27,6 +27,7 @@ const useStyles = createUseStyles({
         boxSizing:'border-box',
         marginTop: '30px',
         marginBottom:'80px',
+        minWidth: 1000,
         },
     courseTitle:{
         display:'none',
