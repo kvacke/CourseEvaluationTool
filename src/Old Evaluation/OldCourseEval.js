@@ -296,7 +296,7 @@ const OldCourseEval = (props) => {
               "https://esurvey.uid.com/survey/#42b15f72-0956-432e-b7fa-350e81f9a62c"
             }
           >
-            Tryck här för att komma till enkäten!
+            Tryck här för att komma till enkäten "Attrakdiff"!
           </a>{" "}
           <p>
             (Byt språk till Engelska, längst upp till höger på sidan, när du
