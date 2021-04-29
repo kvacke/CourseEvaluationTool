@@ -138,7 +138,7 @@ let page1 = [
         disabled : false,
         title:'I vilken grad har du haft svårigheter att följa med i kursen på grund av bristande förkunskaper?',
         options: grader,
-        category:'Under kursen'
+        category:'Förutsättningar'
     },
 ]
 let page2 = [
